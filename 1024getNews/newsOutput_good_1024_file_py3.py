@@ -61,7 +61,7 @@ def writeHtml(soup):
 	print(soup.title)
 	titleStr = str(soup.title.text).split()[0]
 	writeHtmlPage(titleStr)
-	fileWrited=open("new.txt",'w',encoding="utf8")
+	fileWrited=open(titleStr+".txt",'w',encoding="utf8")
 	inforGet =  soup.findAll("div", {"class":'tpc_content do_not_catch'})
 	soupNewHtml = BeautifulSoup(str(inforGet[0]), 'html.parser')
 	fileWrited.write(str(soupNewHtml.prettify()))
@@ -72,7 +72,7 @@ def writeHtml(soup):
 if __name__ == '__main__':
 	lineIndex=0
 
-	pageStrUrl = 'https://t66y.com/htm_data/7/1802/3008617.html'
+	pageStrUrl = 'https://t66y.com/htm_data/20/1801/2941900.html'
 	print(pageStrUrl)
 	page  = requests.get(pageStrUrl,headers = headers,proxies = proxyDic)
 	soup = BeautifulSoup(page.content,'html.parser') # 按照html格式解析页面

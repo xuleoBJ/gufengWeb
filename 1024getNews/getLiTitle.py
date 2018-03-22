@@ -5,14 +5,14 @@ import shutil
 
   
 if __name__=='__main__':
-    sourceDirPath="20180322"
+    sourceDirPath="AdultReader"
     fileNames=os.listdir(sourceDirPath)
     goalFilepath = sourceDirPath+"_"+"LiTitle.txt"
     file_object = open(goalFilepath,'w',encoding='utf8')
     for fileName in fileNames:
         strFile=sourceDirPath+"/"+fileName
         textHtml=open(strFile,'r',encoding='utf8')
-        InforStr= '''<a href="20180322/{0}" class="list-group-item ">[]{1} </a>
+        InforStr= '''<a href="AdultReader/{0}" class="list-group-item ">[]{1} </a>
                   '''.format(fileName,fileName.split('.')[0])
 
         file_object.write(InforStr+'\n')
