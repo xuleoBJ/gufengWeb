@@ -5,7 +5,7 @@ import shutil
 
   
 if __name__=='__main__':
-    sourceDirPath="AdultReader"
+    sourceDirPath="20180323"
     fileNames=os.listdir(sourceDirPath)
     goalFilepath = sourceDirPath+"_"+"LiTitle.txt"
     file_object = open(goalFilepath,'w',encoding='utf8')
