@@ -72,7 +72,7 @@ def writeHtml(soup):
 if __name__ == '__main__':
 	lineIndex=0
 
-	pageStrUrl = 'https://t66y.com/htm_data/7/1803/3073400.html'
+	pageStrUrl = 'https://t66y.com/htm_data/7/1803/3063430.html'
 	print(pageStrUrl)
 	page  = requests.get(pageStrUrl,headers = headers,proxies = proxyDic)
 	soup = BeautifulSoup(page.content,'html.parser') # 按照html格式解析页面

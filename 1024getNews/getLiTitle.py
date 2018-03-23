@@ -12,8 +12,8 @@ if __name__=='__main__':
     for fileName in fileNames:
         strFile=sourceDirPath+"/"+fileName
         textHtml=open(strFile,'r',encoding='utf8')
-        InforStr= '''<a href="AdultReader/{0}" class="list-group-item ">[]{1} </a>
-                  '''.format(fileName,fileName.split('.')[0])
+        InforStr= '''<a href="{0}/{1}" class="list-group-item ">[]{2} </a>
+                  '''.format(sourceDirPath,fileName,fileName.split('.')[0])
 
         file_object.write(InforStr+'\n')
 
