@@ -6,7 +6,7 @@ headers = {
     'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
 }
 
-proxyDic = dict(http='socks5://127.0.0.1:9002',https='socks5://127.0.0.1:9002')
+proxyDic = dict(http='socks5://127.0.0.1:1080',https='socks5://127.0.0.1:1080')
 
 filePath = os.path.abspath(__file__)
 osPath = os.path.split(filePath)[0]
@@ -72,7 +72,7 @@ def writeHtml(soup):
 if __name__ == '__main__':
 	lineIndex=0
 
-	pageStrUrl = 'http://t66y.com/htm_data/7/1803/3043044.html'
+	pageStrUrl = 'http://t66y.com/htm_data/7/1803/3081034.html'
 	print(pageStrUrl)
 	page  = requests.get(pageStrUrl,headers = headers,proxies = proxyDic)
 	soup = BeautifulSoup(page.content,'html.parser') # 按照html格式解析页面
