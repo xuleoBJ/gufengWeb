@@ -1,12 +1,15 @@
 import requests
 import os
 from bs4 import BeautifulSoup
+import sys 
 
+type = sys.getfilesystemencoding()
+print(type)
 headers = {
-    'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0'
+    'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
 }
 
-proxyDic = dict(http='socks5://127.0.0.1:1080',https='socks5://127.0.0.1:1080')
+proxyDic = dict(http='http://10.122.14.79:8787',https='http://10.122.14.79:8787')  ##办公室杜lantern
 
 filePath = os.path.abspath(__file__)
 osPath = os.path.split(filePath)[0]
@@ -72,9 +75,10 @@ def writeHtml(soup):
 if __name__ == '__main__':
 	lineIndex=0
 
-	pageStrUrl = 'http://t66y.com/htm_data/7/1803/3084299.html'
+	pageStrUrl = 'http://t66y.com/htm_data/7/1803/3078282.html'
 	print(pageStrUrl)
 	page  = requests.get(pageStrUrl,headers = headers,proxies = proxyDic)
+	print("proxy is OK")
 	soup = BeautifulSoup(page.content,'html.parser') # 按照html格式解析页面
 	writeHtml(soup)
 
