@@ -5,9 +5,9 @@ import sys
 
 type = sys.getfilesystemencoding()
 print(type)
-headers = {
-    'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
-}
+headers={
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+    }
 
 proxyDic = dict(http='http://10.122.14.79:8787',https='http://10.122.14.79:8787')  ##办公室杜lantern
 
