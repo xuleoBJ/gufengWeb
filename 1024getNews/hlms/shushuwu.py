@@ -60,7 +60,7 @@ osPath = os.path.split(filePath)[0]
 print(filePath)
 
 
-for i in range(38408,38412):
+for i in range(38303,38412):
 	pageStrUrl = "http://www.shushuwu.cc/novel/4787/{}.html".format(str(i))
 	print(pageStrUrl)
 	proxy = 0
