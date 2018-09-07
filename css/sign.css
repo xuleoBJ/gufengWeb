@@ -1,0 +1,72 @@
+body{
+	background: #EEEEEE;
+}
+#sign_header{
+	width: 100vw;
+	height: 1.3rem;
+	background:#FFD161;
+	box-sizing: border-box;
+	padding: 0.15rem 0.45rem;
+	position: fixed;
+	top:0;
+}
+#sign_header span{
+	font-size: 0.45rem;
+	line-height: 1rem;
+	display: block;
+	float: left;
+}
+#sign_middle{
+	margin-top: 1.6rem;
+	width: 100vw;
+	padding: 0 0.4rem;
+	font-size: 0.4rem;
+	line-height: 1.35rem;
+	background: #fff;
+	font-family: iconfont;
+}
+.phone{
+	width: 100vw;
+	height: 1.3rem;
+	background: #fff;
+	outline: none;
+	border:none;
+	padding: 0 0.4rem;
+	margin-top: 0.3rem;
+}
+.agree{
+	width: 100vw;
+	padding: 0.5rem 0.4rem;
+	overflow: hidden;
+}
+.agree_cricle{
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 0.5rem;
+	border:0.02rem solid #000;
+	float: left;
+}
+.agree_content{
+	float: left;
+	width: 9.3rem;
+	font-size: 0.4rem;
+	margin-left: 0.2rem;
+	line-height: 0.6rem;
+}
+.agree_content i{
+	text-decoration: underline;
+	color:#FFD161;
+}
+.agree_sign{
+	width: 10rem;
+	margin: auto;
+	height: 1.3rem;
+	background: #ccc;
+	color: #fff;
+	border:none;
+	outline: none;
+	font-size: 0.45rem;
+	border-radius: 0.1rem;
+	display: block;
+	margin-top: 0.5rem;
+}

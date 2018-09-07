@@ -1,0 +1,131 @@
+body{
+	background: #EFEFEF;
+}
+#self_header{
+	width: 100vw;
+	height:3.6rem;
+	padding-top: 0.2rem;
+	padding-left: 0.3rem;
+	padding-right: 0.2rem;
+	color: #333;
+	background: url("../img/s1.png");
+	background-size: 10% 30%;
+}
+#self_header a{
+	color: #333;
+}
+.self_part{
+	float: right;
+	font-family: iconfont;
+	font-size: 0.7rem;
+}
+.self_head{
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 1.6rem;
+	overflow: hidden;
+	margin-top: 1.3rem;
+	float: left;
+}
+.self_head img{
+	width: 100%;
+	height: 100%;
+}
+#self_header>span{
+	width: 5rem;
+	font-size: 0.5rem;
+	margin-top: 1.4rem;
+	margin-left: 0.5rem;
+	float: left;
+	display: block;
+}
+#self_header>span:last-child{
+	margin-top: 0.1rem;
+}
+#self_part,#asset,#more{
+	width: 100vw;
+	background: #fff;
+	margin-top: 0.3rem;
+	overflow: hidden;
+}
+#self_part li{
+	width: 25vw;
+	float: left;
+	padding-top: 0.45rem;
+	text-align: center;
+}
+#self_part li p:first-child{
+	font-size: 0.8rem;
+	font-family: iconfont;
+}
+#self_part li p:last-child{
+	font-size: 0.4rem;
+	margin-top: 0.2rem;
+}
+#self_pic img{
+	margin-top: 0.3rem;
+	width: 100vw;
+}
+#asset p,#more p{
+	width: 95vw;
+	font-size: 0.45rem;
+	margin-left: 5vw;
+	line-height: 1.25rem;
+	border-bottom:0.01rem solid #ccc;
+}
+#asset li,#more li{
+	width: 25vw;
+	padding:0.35rem 0 0.35rem 0;
+	text-align: center;
+	float: left;
+}
+#asset li span:first-child,#more li span:first-child{
+	font-size: 0.9rem;
+	font-family: iconfont;
+	display: block;
+}
+#asset li span:nth-child(2),
+#more li span:nth-child(2){
+	font-size: 0.4rem;
+	display: block;
+}
+#asset li span:nth-child(3){
+	font-size: 0.35rem;
+	display: block;
+}
+#more{
+	padding-bottom: 1.5rem;
+}
+#tab{
+	width: 100vw;
+	height: 1.5rem;
+	position: fixed;
+	bottom:0;
+	left:0;
+	background: #fff;
+}
+#tab span{
+	width: 33.3333333333vw;
+	height: 100%;
+	color: lightslategrey;
+	display: block;
+	float: left;
+	padding: 0.2rem 0;
+}
+#tab span i:first-child{
+	font-size: 0.6rem;
+	text-align: center;
+	font-family: iconfont;
+	display: block;
+}
+#tab span i:last-child{
+	font-size: 0.3rem;
+	text-align: center;
+	display: block;
+}
+#tab span:hover i:first-child{
+	color: #FBCD5A;
+}
+#tab span:hover i:last-child{
+	color: #000;
+}

@@ -1,0 +1,21 @@
+@font-face {
+	font-family: 'iconfont';  /* project id 618654 */
+	src: url('https://at.alicdn.com/t/font_618654_p6xz47uoytk8d7vi.eot');
+	src: url('https://at.alicdn.com/t/font_618654_p6xz47uoytk8d7vi.eot?#iefix') format('embedded-opentype'),
+	url('https://at.alicdn.com/t/font_618654_p6xz47uoytk8d7vi.woff') format('woff'),
+	url('https://at.alicdn.com/t/font_618654_p6xz47uoytk8d7vi.ttf') format('truetype'),
+	url('https://at.alicdn.com/t/font_618654_p6xz47uoytk8d7vi.svg#iconfont') format('svg');
+}
+*{
+	margin: 0; /* body的margin值默认8px */
+	text-decoration: none;
+	font-style: normal;
+	padding: 0;
+	list-style: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	box-sizing: border-box;
+}
+img{
+	display: block;
+}
+

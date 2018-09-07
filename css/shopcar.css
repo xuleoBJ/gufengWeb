@@ -1,0 +1,188 @@
+#car_header{
+	width: 100vw;
+	height: 1.3rem;
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+	background: #FAFAFA;
+	position: fixed;
+	top:0;
+	display:flex;
+	font-size: 0.55rem;
+	flex-wrap: wrap;
+	line-height: 1.3rem;
+	align-content: space-between;
+	justify-content: space-between;
+}
+#car_header span:last-child{
+	font-size: 0.4rem;
+	line-height: 1.3rem;
+}
+#shopcar_content{
+	width: 100vw;
+	padding-bottom: 1.5rem;
+	margin-top: 1.3rem;
+	background: #F1F1F1;
+}
+.shopcar_con{
+	background: #fff;
+	width: 100%;
+	padding-top: 0.3rem;
+	padding-left: 0.3rem;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.car_chance,.car_head{
+	width: 0.5rem;
+	height: 0.5rem;
+	border:0.01rem solid #ccc;
+	border-radius: 50%;
+	float: left;
+}
+.car_head{
+	width: 0.52rem;
+	height: 0.52rem;
+	overflow: hidden;
+	margin: 0 0.18rem 0 0.3rem;
+}
+.car_head img{
+	width: 0.7rem;
+	height: 0.7rem;
+}
+.car_con_name{
+	overflow: hidden;
+}
+.car_con_name span:nth-of-type(1),
+.car_con_name span:nth-of-type(2){
+	float: left;
+	font-size: 0.4rem;
+	font-family: iconfont;
+}
+.car_con_name span:nth-of-type(2){
+	margin-left: 0.8rem;
+	margin-top: 0.15rem;
+}
+.car_con_name span:nth-of-type(2) i{
+	border:0.01rem solid red;
+	padding: 0.05rem 0.1rem;
+	margin-right: 0.2rem;
+	font-size: 0.38rem;
+}
+.car_con_details{
+	width: 100%;
+	height: 2.22rem;
+	margin-top: 0.3rem;
+}
+.car_con_inner{
+	width: 9.7rem;
+	background: #F7F7F7;
+	height: 2.2rem;
+	float: left;
+	margin-left: 0.3rem;
+}
+.car_con_inner img{
+	height: 100%;
+	float: left;
+}
+.car_con_inner p{
+	float: left;
+}
+.car_con_inner p:first-of-type{
+	font-size: 0.5rem;
+	padding:0.15rem 0.25rem;
+}
+.car_con_inner p:first-of-type span{
+	background: #BD87F0;
+	color: #fff;
+	font-size: 0.45rem;
+	padding: 0 0.1rem;
+	margin-right: 0.2rem;
+}
+.car_con_inner p:last-of-type{
+	width: 7.25rem;
+	padding-left: 0.3rem;
+	margin-top: 0.55rem;
+}
+.car_con_inner p:last-of-type i{
+	font-size: 0.4rem;
+	color: #ccc;
+	float: left;
+}
+.car_con_inner p:last-of-type i:last-of-type{
+	float: right;
+	text-decoration: line-through;
+}
+.car_con_inner p:last-of-type span{
+	font-size: 0.5rem;
+	float: right;
+	margin-top: -0.08rem;
+}
+.car_con_details .car_chance{
+	margin-top: 0.8rem;
+}
+.first_simple{
+	width: 100%;
+	height: 1.1rem;
+	border-bottom:0.01rem solid #ccc;
+	padding-left: 0.8rem;
+	font-size: 0.4rem;
+	line-height: 1.1rem;
+}
+.first_simple span:last-child{
+	float: right;
+	margin-right: 0.28rem;
+}
+.discounts{
+	height: 1.65rem;
+	border:0;
+	line-height: 1.65rem;
+}
+.discounts span:last-child i:first-child{
+	font-weight: 700;
+	color: red;
+	font-size: 0.45rem;
+}
+.discounts span:last-child i:last-child{
+	display: block;
+	float: right;
+	width: 2rem;
+	height: 1.2rem;
+	background:#FFD161;
+	text-align: center;
+	line-height: 1.2rem;
+	margin-top: 0.2rem;
+	margin-left: 0.15rem;
+	border-radius: 0.2rem;
+}
+#tab{
+	width: 100vw;
+	height: 1.5rem;
+	position: fixed;
+	bottom:0;
+	left:0;
+	background: #fff;
+}
+#tab span{
+	width: 33.3333333333vw;
+	height: 100%;
+	color: lightslategrey;
+	display: block;
+	float: left;
+	padding: 0.2rem 0;
+}
+#tab span i:first-child{
+	font-size: 0.6rem;
+	text-align: center;
+	font-family: iconfont;
+	display: block;
+}
+#tab span i:last-child{
+	font-size: 0.3rem;
+	text-align: center;
+	display: block;
+}
+#tab span:hover i:first-child{
+	color: #FBCD5A;
+}
+#tab span:hover i:last-child{
+	color: #000;
+}

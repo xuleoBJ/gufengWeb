@@ -1,0 +1,79 @@
+body{
+	background: #EFEFEF;
+}
+#message_header{
+	width: 100vw;
+	height: 1.3rem;
+	background:#FAFAFA;
+	box-sizing: border-box;
+	padding: 0.15rem 0.3rem;
+	position: fixed;
+	top:0;
+}
+#message_header span{
+	font-family: iconfont;
+	font-size: 0.8rem;
+	line-height: 1rem;
+	display: block;
+	float: left;
+}
+#message_header span:last-child{
+	font-size: 0.45rem;
+}
+#content{
+	width: 100vw;
+	background: #fff;
+	height: 6.5rem;
+	margin-top:1.5rem;
+	padding: 0rem 0.4rem;
+}
+.message_head{
+	line-height: 2rem;
+	font-size: 0.42rem;
+}
+.message_head span{
+	float: left;
+}
+.message_head span:nth-of-type(3){
+	width: 1.3rem;
+	height: 1.3rem;
+	display: block;
+	float: right;
+	overflow: hidden;
+	margin-top: 0.35rem;
+	border-radius: 1.3rem;
+}
+.message_head span:nth-of-type(3) img{
+	width:100%;
+	overflow: hidden;
+}
+.message_head span:nth-of-type(2){
+	float: right;
+	font-size: 0.5rem;
+	font-family: iconfont;
+}
+#content p{
+	overflow: hidden;
+}
+.message_details{
+	height: 1.5rem;
+	line-height: 1.4rem;
+	margin-top: 0;
+	border-top: 0.01rem solid #ccc;
+}
+.message_details span:nth-of-type(3){
+	margin-top: 0;
+	width: auto;
+}
+#exit{
+	width: 100vw;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	background: #fff;
+	position: fixed;
+	bottom:0;
+	font-size: 0.45rem;
+	color: red;
+	left:0;
+}

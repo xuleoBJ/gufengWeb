@@ -1,0 +1,102 @@
+#class_search{
+	width: 100vw;
+	height: 1.3rem;
+	background:#fff;
+	box-sizing: border-box;
+	padding: 0.15rem 0.3rem;
+	border-bottom:0.02rem solid #ccc;
+	position: fixed;
+	top:0;
+}
+#class_search span{
+	font-family: iconfont;
+	font-size: 0.8rem;
+	line-height: 1rem;
+	display: block;
+	float: left;
+}
+#class_search input{
+	display: block;
+	float:left;
+	outline:none;
+	width: 9.35rem;
+	border:none;
+	padding-left: 0.2rem;
+	background: #F3F3F3;
+	height: 0.8rem;
+	margin-top: 0.1rem;
+	border-radius: 0.1rem;
+	font-family:iconfont;
+ }
+#class_all{
+	width: 100vw;
+	height: 100%;
+	background: #F4F4F4;
+	padding: 0 0.28rem 0 0;
+	overflow: hidden;
+	margin-top: 1.32rem;
+}
+.class_left{
+	width: 2.7rem;
+	float: left;
+	position: fixed;
+	top:1.32rem;
+}
+.class_left ul{
+	background: #fff;
+	font-size: 0.38rem;
+}
+.class_left ul li{
+	width: 100%;
+	height: 1.3rem;
+	line-height: 1.3rem;
+	text-align: center;
+}
+.class_right{
+	float: right;
+	width: 7.5rem;
+	background:#fff;
+}
+.class_right h1{
+	font-size: 0.38rem;
+	line-height: 1.3rem;
+	font-weight: 500;
+	width: 7.5rem;
+}
+.class_right_part li{
+	width: 2.5rem;
+	height: 3.5rem;
+	float: left;
+	color:#333;
+	padding-top: 0.6rem;
+}
+.class_right i{
+	font-family: iconfont;
+	float: right;
+}
+.class_right_part{
+	width: 100%;
+}
+.class_pic{
+	width: 1.5rem;
+	height: 1.5rem;
+	background: red;
+	margin: auto;
+}
+.class_right_part p{
+	font-size: 0.3rem;
+	text-align: center;
+	margin-top: 0.3rem;
+	margin-bottom: 0.15rem;
+}
+.class_right_part span{
+	font-size: 0.26rem;
+	text-align: center;
+	display: block;
+	width: 0.8rem;
+	margin: 0 auto;
+	height: 0.45rem;
+	line-height: 0.45rem;
+	border-radius: 0.5rem;
+	background: #F3F3F3;
+}

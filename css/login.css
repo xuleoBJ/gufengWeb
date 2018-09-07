@@ -1,0 +1,65 @@
+#login_header{
+	width: 100vw;
+	height: 1.3rem;
+	background:#FFD161;
+	box-sizing: border-box;
+	padding: 0.15rem 0.3rem;
+	position: fixed;
+	top:0;
+}
+#login_header span{
+	font-family: iconfont;
+	font-size: 0.8rem;
+	line-height: 1rem;
+	display: block;
+	float: left;
+}
+#login_header span:nth-child(2){
+	font-size: 0.45rem;
+	margin-left: 0.7rem;
+}
+#login_header span:nth-child(3){
+	font-size: 0.52rem;
+	margin-left: 5.6rem;
+}
+#login_middle{
+	margin-top: 3.5rem;
+}
+#login_middle input{
+	width: 9rem;
+	height: 1.5rem;
+	border:none;
+	line-height: 1rem;
+	border-bottom: 0.01rem solid #ccc;
+	outline: none;
+	display: block;
+	margin: auto;
+}
+.next{
+	width: 9rem;
+	height: 1.1rem;
+	border-radius: 0.2rem;
+	background: #ccc;
+	color: #fff;
+	margin: 0.35rem auto;
+	font-size: 0.4rem;
+	text-align: center;
+	line-height: 1.1rem;
+}
+.else{
+	width: 100vw;
+	text-align: center;
+	font-size: 0.38rem;
+	margin-top: 1.6rem;
+	color:#FFD161;
+}
+.agree{
+	width: 100vw;
+	text-align: center;
+	font-size: 0.38rem;
+	margin-top: 8.1rem;
+}
+.agree i{
+	text-decoration: underline;
+	color:#FFD161;
+}
