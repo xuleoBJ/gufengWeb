@@ -3,97 +3,184 @@ import re
 def onQQMessage(bot, contact, member, content):
 	##请问 格式 请问+空格+内容
 	strContent = content
-	if content.strip()!="" and strContent.startswith('请问') and len(content.strip().split())>=2:
-		strContent = content.split()[1].strip()
-		## 咨询有区域店	
-		if strContent in '望京有推荐吗':
-			bot.SendTo(contact, '有青丘，玉颜堂，谧享')
-		if strContent in '大屯路有推荐吗':
-			bot.SendTo(contact, '御殿，花涧溪')
-		if strContent in '海淀有推荐吗':
-			bot.SendTo(contact, '樱木子，御仙阁，舞丝阁')
-		if strContent in '10号线有推荐吗':
-			bot.SendTo(contact, '太阳宫揽月阁，宜生堂，双井蜜桃会')
-		if strContent in '望京有么':
-			bot.SendTo(contact, '有青丘，玉颜堂，谧享')
-		if strContent in '通州有么':
-			bot.SendTo(contact, '君悦')
-		if strContent in '南边有么':
-			bot.SendTo(contact, '旧宫丝云阁，流翠轩')	
-		if strContent in '西边有么':
-			bot.SendTo(contact, '御仙阁，樱沐子')	
+	if content.strip()!="" and strContent.startswith('请问') :
+		answer  = False
+		if	len(content.strip().split())>=2:
+			strContent = content.split()[1].strip()
+			## 咨询有区域店	
+			if strContent in '望京有吗？':
+				bot.SendTo(contact, '青丘，玉颜堂，谧享')
+				answer  = True
+			if strContent in '大屯路有吗？':
+				bot.SendTo(contact, '御殿，花涧溪')
+				answer  = True
+			if strContent in '海淀有吗？':
+				bot.SendTo(contact, '樱木子，御仙阁，舞丝阁')
+				answer  = True
+			if strContent in '10号线有吗？':
+				bot.SendTo(contact, '太阳宫揽月阁，宜生堂，双井蜜桃会')
+				answer  = True
+			if strContent in '望京有吗？':
+				bot.SendTo(contact, '有青丘，玉颜堂，谧享')
+				answer  = True
+			if strContent in '通州有吗？':
+				bot.SendTo(contact, '君悦')
+				answer  = True
+			if strContent in '南边有吗？':
+				bot.SendTo(contact, '旧宫丝云阁，流翠轩')	
+				answer  = True
+			if strContent in '西边有吗？':
+				bot.SendTo(contact, '御仙阁，樱沐子')	
+				answer  = True
+				
+			## 咨询有区域店的位置	
+			if strContent in '君悦在哪里?':
+				bot.SendTo(contact, '朝阳双桥')
+				answer  = True
+			if strContent in '玉颜堂在哪里?':
+				bot.SendTo(contact, '望京南地铁A口')
+				answer  = True
+			if strContent in '90主题在哪里?':
+				bot.SendTo(contact, '马连道')
+				answer  = True
+			if strContent in '宜生堂在哪?':
+				bot.SendTo(contact, '太阳宫')
+				answer  = True
+			if strContent in '舞丝阁在哪里?':
+				bot.SendTo(contact, '宇宙中心五道口')
+				answer  = True
+			if strContent in '樱沐子在哪里?':
+				bot.SendTo(contact, '魏公村附近')
+				answer  = True
+			if strContent in '谧享在哪里?':
+				bot.SendTo(contact, '望京东湖渠')
+				answer  = True
+			if strContent in '青丘在哪里?':
+				bot.SendTo(contact, '望京南')
+				answer  = True
+			if strContent in '百媚在哪里?':
+				bot.SendTo(contact, '北苑')
+				answer  = True
 			
-		## 咨询有区域店的位置	
-		if strContent in '君悦在哪里?':
-			bot.SendTo(contact, '朝阳双桥')
-		if strContent in '玉颜堂在哪里?':
-			bot.SendTo(contact, '望京南地铁A口')
-		if strContent in '90主题在哪里?':
-			bot.SendTo(contact, '马连道')
-		if strContent in '宜生堂在哪?':
-			bot.SendTo(contact, '太阳宫')
-		if strContent in '舞丝阁在哪里?':
-			bot.SendTo(contact, '宇宙中心五道口')
-		if strContent in '谧享在哪里?':
-			bot.SendTo(contact, '望京东湖渠')
-		if strContent in '青丘在哪里?':
-			bot.SendTo(contact, '望京南')
-		if strContent in '百媚在哪里?':
-			bot.SendTo(contact, '北苑')
+			#分类评价
+			if strContent in {'大尺有哪几家？','大尺哪几家？','大尺有哪几家？','有哪些大尺店?'} or '大尺有哪' in strContent:
+				bot.SendTo(contact, '旧宫丝云，流翠轩，90主题，青塔LL')
+				answer  = True
+			if strContent in {'小尺有哪几家？','小尺哪几家？','有哪些小尺店?'} or '小尺有哪' in strContent:
+				bot.SendTo(contact, '谧享，君悦，宜生堂')
+				answer  = True
+			if strContent in {'中尺有哪几家？','中尺哪几家？','有哪些中尺店?'} or '中尺有哪' in strContent:
+				bot.SendTo(contact, '除了小尺大尺就是中尺')
+				answer  = True
+			if strContent in '哪个胸大颜值高服务好?':
+				bot.SendTo(contact, 'sorry, 这个问题我还没想好')
+				answer  = True
+			if strContent in '哪个老妹儿活儿好':
+				bot.SendTo(contact, 'sorry, 我知道，但是我不敢说，怕被友商客服骂死：)')
+				answer  = True
+			if strContent in '丝足哪家强':
+				bot.SendTo(contact, '玉颜堂有妞腿很长')
+				answer  = True
+			if strContent in '新友商是哪几家？':
+				bot.SendTo(contact, '玉颜堂，樱木子，舞丝阁')
+				answer  = True
+			if strContent in {'友商谁家按摩最好','谁家按摩好'}:
+				bot.SendTo(contact, '宜生堂')
+				answer  = True
+				
+			##各店点评
+			if strContent in '谧享的特色是啥？':
+				bot.SendTo(contact, '水床AV')
+				answer  = True
+			if strContent in '君悦的特色是啥？':
+				bot.SendTo(contact, '1 极致小尺享受 2 花式诱惑欲罢不能 3 手冰火特色十足 ')
+				answer  = True
+			if strContent in '百媚的特色是啥？':
+				bot.SendTo(contact, '1 角色扮演 2 定制制服 3 诱惑舞蹈 4 安全性好，可开发票。 ')
+				answer  = True
+			if strContent in '宜生堂的特色是啥？':
+				bot.SendTo(contact, '男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。 ')
+				answer  = True
+			if strContent in '花涧溪的特色是啥？':
+				bot.SendTo(contact, '态度极好，妩媚妖娆 ')
+				answer  = True
+			if strContent in '90后主题的特色是啥？':
+				bot.SendTo(contact, '1 安全性非常好 2 技师主打90后 3 态度好，服务标准化，浴室的服务有特色。 ')
+				answer  = True
+			if strContent in '御殿的特色是啥？':
+				bot.SendTo(contact, '环境非常好，非常好 ')
+				answer  = True
+			if strContent in '玉颜堂的特色是啥？':
+				bot.SendTo(contact, '有美人兮， 见之不忘。一日不见兮，思之如狂。 ')
+				answer  = True
+			if strContent in '御盛阁的特色是啥？':
+				bot.SendTo(contact, '思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 ')
+				answer  = True
+			if strContent in '蜜桃会的哪个美女做饭好吃':
+				bot.SendTo(contact, '客服爱做饭，做饭也好吃')
+			if strContent in {'搞活动的是哪几家?','搞活动的是哪家?'}:
+				bot.SendTo(contact, '玉颜堂')
+				bot.SendTo(contact, '君悦')
+				answer  = True
+		if answer == False :
+			bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。')
 		
-		#分类评价
-		if strContent in {'大尺有哪几家？','大尺哪几家？','有哪些大尺店'}:
-			bot.SendTo(contact, '旧宫丝云，流翠轩，90主题，青塔LL')
-		if strContent in {'小尺有哪几家？','小尺哪几家？','有哪些小尺店'}:
-			bot.SendTo(contact, '谧享，君悦，宜生堂')
-		if strContent in '哪个胸大颜值高服务好':
-			bot.SendTo(contact, 'sorry, 这个问题我还没想好')
-		if strContent in '哪个老妹儿活儿好':
-			bot.SendTo(contact, 'sorry, 我知道，但是我不敢说，怕被友商客服骂死：)')
-		if strContent in '丝足哪家强':
-			bot.SendTo(contact, '玉颜堂有妞腿很长')
-		if strContent in '新友商是哪几家？':
-			bot.SendTo(contact, '玉颜堂，樱木子，舞丝阁')
-		if strContent in {'友商谁家按摩最好','谁家按摩好'}:
-			bot.SendTo(contact, '宜生堂')
-			
-		##各店点评
-		if strContent in '谧享的特色是啥？':
-			bot.SendTo(contact, '水床AV')
-		if strContent in '君悦的特色是啥？':
-			bot.SendTo(contact, '1 极致小尺享受 2 花式诱惑欲罢不能 3 手冰火特色十足 ')
-		if strContent in '百媚的特色是啥？':
-			bot.SendTo(contact, '1 角色扮演 2 定制制服 3 诱惑舞蹈 4 安全性好，可开发票。 ')
-		if strContent in '宜生堂的特色是啥？':
-			bot.SendTo(contact, '男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。 ')
-		if strContent in '花涧溪的特色是啥？':
-			bot.SendTo(contact, '态度极好，妩媚妖娆 ')
-		if strContent in '90后主题的特色是啥？':
-			bot.SendTo(contact, '1 安全性非常好 2 技师主打90后 3 态度好，服务标准化，浴室的服务有特色。 ')
-		if strContent in '御殿的特色是啥？':
-			bot.SendTo(contact, '环境非常好，非常好 ')
-		if strContent in '玉颜堂的特色是啥？':
-			bot.SendTo(contact, '有美人兮， 见之不忘。一日不见兮，思之如狂。 ')
-		if strContent in '御盛阁的特色是啥？':
-			bot.SendTo(contact, '思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 ')
-		if strContent in '蜜桃会的哪个美女做饭好吃':
-			bot.SendTo(contact, '客服爱做饭，做饭也好吃')
-		if strContent in {'搞活动的是哪几家?','搞活动的是哪家'}:
-			bot.SendTo(contact, '玉颜堂')
-			bot.SendTo(contact, '君悦')
-	
-	elif content.strip()!="" and strContent.startswith('评论') and len(content.strip().split())>=2:
-		strContent = content.split()[1].strip()		
-		if strContent in '青丘':
-			bot.SendTo(contact, '中尺,环境干净，舒适，房间都有泡澡的独立淋浴间，物品都是一次性的,小分队优惠大，技师年轻漂亮，服务好')
-		if strContent in '花涧溪':
-			bot.SendTo(contact, '中尺,环境干净，舒适，房间都有泡澡的独立淋浴间，物品都是一次性的,小分队优惠大，技师年轻漂亮，服务好')	
-		if strContent in '玉颜堂':
-			bot.SendTo(contact, '中尺,环境干净，舒适，房间都有泡澡的独立淋浴间，物品都是一次性的,小分队优惠大，技师年轻漂亮，服务好')	
-		if strContent in '御店':
-			bot.SendTo(contact, '中尺,环境干净，舒适，房间都有泡澡的独立淋浴间，物品都是一次性的,小分队优惠大，技师年轻漂亮，服务好')	
+	if content.strip()!="" and strContent.startswith('评论') :
+		answer  = False
+		if	len(content.strip().split())>=2:
+			strContent = content.split()[1].strip()		
+			if strContent in '君悦':
+				bot.SendTo(contact, '刚刚去君悦体验了静静，大概说一下。商家并没有强推这位姑娘，首先看照片是很真实的生活照，这是我比较在意的，特别害怕买家秀那那种差异，对于当时的心情绝对是打击。看到静静地第一眼，这是一个颜值很高的女孩，93年，待人接物的感觉不是那么稚嫩，游刃有余。脸特别小，只能比照片看着更好。个头小但身材匀称，没有肚腩，细直的退步线条，加上白皙的皮肤，你会感觉这是一个和你在学校相识的女孩而不是夜店。有些小个女生是溜肩，但她的肩部线条绝对是值得你仔细品味的，臀部不塌陷，有腰身，整个背景的比例很协调，绝对不是伸长腿短。服务当中很注重细节，轻重很到位，互动的时候，分寸感把握很好，有近有远，全身没有多余的肉，抱住的感觉让你有一种想再抱紧一点的感觉。微笑，谈吐都非常好。颜值绝对是你看5分钟不会腻的，特别是侧脸。绝对值得一去，绝对值得再去的。更多的细节，大家自己去体验就好了，很好。')
+				bot.SendTo(contact, '小尺去过好多家，都比不上君悦')
+				answer  = True
+			if strContent in '青丘':
+				bot.SendTo(contact, '中尺,环境干净，舒适，房间都有泡澡的独立淋浴间，物品都是一次性的,小分队优惠大，技师年轻漂亮，服务好')
+				bot.SendTo(contact, '用单身30年的手速抢下了青丘的体验资格，去了之后果然不虚此行。地处望京繁华地段，所以不是特别好停车，果断打车前往，青丘和咱们群其他家不一样的地方是她家是门店，进门之后遥控锁门很安全。上楼之后整体环境很温馨，也很调情，不过要提前预定大床房，体验更好。一共4个JS，两个在上钟，客服特意将店里头牌留下给我们，体贴周到。1号小云四川美女，声音5个加号，颜值7分，身材9分。 B面开始，肩部背部按摩手感合适，拿捏到位，很会聊天调节气氛，主要是声音太好听了。然后是无敌的舌头让人欲罢不能，又吸又舔，GC迭起。水墨更不用提，我觉得得是必选项目，身体柔软在你身上游来游去，掺杂着淫言乱语，不得不让你缴械投降。完事也帮忙淋浴和擦拭，总体来说我觉得A4+ 到A5之间吧，价格合适，环境整洁，很多一次性用品，JS手法好，服务控，客服也很体贴，推荐群友体验，不会后悔的。')
+				bot.SendTo(contact, '和兄弟一起去体验的青丘SPA，环境干净整洁，JS6号安然年轻漂亮，特别像邓紫棋，但是比邓紫棋瘦，所以更漂亮。按摩和服务比较卖力，躺在大圆床上，看着年轻貌美的小姑娘在那忙来忙去，不禁感叹时光流逝，想想自己的青葱岁月，唉？ 好像进错片场了，赶紧转回思绪享受小美女带来的极致体验，粉嫩的都有点舍不得，出货后还有热茶，饮料什么的补补身子。体验一番下来，觉得比去过的好一点，适合调情或者放松，推荐大家去。如果要专注按摩，可以出门左手扬州修脚，')
+				bot.SendTo(contact, '今天中午有时间去了青丘，碰到了新来的18岁js，从北苑店刚过来的，长相比较好看，身材好身高1米63左右，不矮。进屋后先帮我洗澡，然后她自己也冲了一个澡，一次性浴巾，赞躺在床上后先给我精油推背，必须赞的是她推的很好，很努力，力度也够，全身都推，还给我讲一些推油的注意事项，懂的很多。推了半小时左右，全裸服务，细节不表，但是真心舒服，我到现在还很激动，她很注意你的感受，偶尔也会御姐一下，但是自己又笑的不行。小姑娘身材很好，全身没有赘肉，值得一提的是胸型特别好看，很挺。服务后，有点撒娇，躺在怀里和我聊天，帮我按按，聊了很久，肯定超钟了，但是不催，她是主动想陪你放松，这时感觉她是小情人，此刻的她脱去了js的职业化一面，让你感受无比温馨。而且她很可爱，时不时的挑逗你。想了一下，本人中小尺玩的还行，这一次应该是我感受到最好的一次体验，离开时很难舍青丘位置和安全性都不错，室内两层多房间，屋内大床，挺干净，用品均一次性。')
+				answer  = True
+			if strContent in '花涧溪':
+				bot.SendTo(contact, '刚刚去了花间溪 7折体验活动 这里要感谢雪哥   客服很温柔 也挺漂亮的 让人感觉挺舒服 停车不好停 都是路边 体验的是菲儿 长相清纯 是娇小玲珑型 服务很卖力 我感觉这儿为什么贵一点 可能就是因为服务好肯卖力气吧 其他友商可能没有那么严格的要求姑娘卖力的服务 或者说花钱多一点 自然姑娘就更卖力 尺度中 适合放松')
+				bot.SendTo(contact, '清醒的人最荒唐，杨老师跟柯南最近经常哼哼这一曲。白天在单位开会，越开越精神越来越清醒，所以叫上好基友一起去花间溪完成包场的成就。下午去的早，停在了附近的金鼎轩，晚上顺便也在这儿解决的。客服妹子很可爱，声音很嗲，不过让侦探先混熟了可惜可惜，兄弟一场祝福埋心间。我厚着脸皮先选择的大房间，最后留给我的是江西妹子菲儿，接了雪哥的班。助浴很温馨细致，直接在卫生间完成了第一场。值得一提的是，正餐前的魅舞不错，还挺有感觉的。身为老师，制服选择当然是学生装，正好符合菲儿小巧可爱的身材。整个流程都很用心，不敷衍不机车，感觉的到服务。最后完美的完成了第二场。最后提醒大家的是，他家的沐浴液特别香，最好别用，否则事儿后出来对面美食街里面，海底捞烤串都是最佳的选择。感谢客服的优惠。')
+				bot.SendTo(contact, '交作业，从雪哥那里拿到花间溪的折扣，各种波折差点没去成，最终约了老师组合包场出击才成行，体验的是依依，妹子肤白貌美，腿形好看，很乖巧。进房让妹子选套性感蕾丝裙，各种上下其手，服务过程温柔细致，细节就不一一描述了。整体下来还是比较满意的，服务很卖力气，妹子也很配合，不足是kh技术有提高空间，因为有折扣，性价比还可以，听说又推出新套餐，兄弟们可以试试。最后，感谢雪哥争取的折扣，预祝花间溪新套餐大卖，多给群里优惠双击查看原图，文采有限，大伙对付看吧！')
+				answer  = True
+			if strContent in '蜜桃会':
+				bot.SendTo(contact, '复式的 楼下没仔细看 好像是一个厅 楼上两间房 公用卫生间 服务方面 很周到 仔细 帮着宽衣解带的还给脱鞋脱袜子 呵呵 挺温馨的 从进去到出货大概一个多小时吧 然后技师帮着按摩 聊天 挺好的 技师我找的是风哥看上的洋洋 姑娘说刚做不久 我觉得还可以 服务态度用心 会聊天 最后强调一下 客服妹子 身材颜值不错 ly们努力吧 ')
+				bot.SendTo(contact, '刚刚去蜜桃家体验了6号新人。妹妹人很漂亮，跟照片有85%相似，属于耐看型的越看越舒服。 服务走心，很细致，很温柔有恋人的感觉。b面按的很舒服，a面调情很有感觉。全程都有在服务一点不偷懒。 而且姑娘很爱笑感觉很亲切。总体非常满意，好评5')
+				answer  = True				
+			if strContent in '玉颜堂':
+				bot.SendTo(contact, '交通好，颜值高，该有的都有。')
+				bot.SendTo(contact, '昨天体验了望京南玉颜堂9号，地方好找，门店，进门上楼领进屋，9号过来，颜高条细身材好。先是B面，因为我赶时间，要求110分钟项目60-70分钟做完，就算这样工序也是比较细致，中规中矩的B面。翻到A面，换上挑的衣服，打开音乐，这时候感受到亮点，在面前艳舞挑逗，9号那眼神绝了。然后就是常规的手推，完事走人。亮点：js颜值在线，服务用心，洗浴用品味道小品种多。 ')
+				answer  = True
+			if strContent in '御殿':
+				bot.SendTo(contact, '御殿spa，服务非常好，要求都能满足，开心放松能更好的工作。')
+				answer  = True
+			if strContent in '揽月阁':
+				bot.SendTo(contact, '翘班来揽月，见到了传说中的揽月阁双月，念月年轻活力，本人比照片漂亮，月儿性感妩媚，实话都满意，最后听了客服的选了她家的双人套餐！双月陪浴独具特色，很不争气浴室交枪1次，整个过程我都飘呢？他家俩妹子配合密切，各有绝招。火辣的双人艳舞，妹子们情不自己的互动……都让人欲罢不能呀！记不得几次交枪了。完美体验，限价比高！')
+				bot.SendTo(contact, '今天应教师节优惠去了揽月阁体验了月儿，一直都说她家月儿最牛还有过哥们五连发的历史让我被膜拜,让我这每次一发的主向往不已，需找空空如也的感觉，早上和客服约定好时间开车过去，地方停车还是比较方便的，道边就可以不过收停车费10元！  按照客服指引找到房间，房间格局不错，环境色温也让人比较轻松愉悦，让客服去叫技师月儿，月儿的颜值比照片好看~一进来就开始挑逗我，衣裤都是帮忙脱去，在沙发上各种魅惑我！幸好我定力深厚没有缴枪投降，发现沙发战况无果，转战浴室，浴室有个镜子在镜子又各种挑逗，但是哥们咋这事上不能怂，所以依旧战胜一场~回到房间问我想要情趣装还是制服装，我说来情趣的把！ 月儿怕我受不了就让我选个应景的制服，我就躺床上等待换衣，一身制服诱惑出来给我各种魅惑说我这坏学生把他弄的痒痒的，当时叔可忍婶不能忍啊，下床就给报床上一顿肯，然后月儿帮我各种舔，真是跟以往的技师体验不一样，基本上全程都是A面做，过程中月儿射了二次，哥们就出了一次货，看来持久力还是不错的，完事后躺在一起聊了聊就要帮我按摩B面，想想还有20分钟，就没让技师继续了，主要 的时间太长，也感觉这次经历。新的玩法，有时间和精力一定去她家体验下双月的感觉！一个的感觉JS累，自己也累，在他家基本躺尸比较困难。出门的时候走错路了，多走了2公里，下次白天去精力也充沛！文采有限，把过程给你们分享下就好了！')
+				bot.SendTo(contact, ' 联系好地址　驱车前往进门客服详细的介绍和推荐让人感觉很亲切　安排的月儿Ｃ套餐　进屋有点小惊艳　人照无差　身材完美　一同沐浴　助浴很诱惑　洗干净直接蹲下Ｋ了会，不挣气的差点缴枪回屋开始Ｂ面做了很多项目，感觉过了一个世纪　手法很专业　Ａ面更是销魂３６０度KH很棒，此处省略一万字， 缴枪洗澡 总之是很好的一次体验，我给评95分吧 毕竟不能让商家太骄傲')
+				bot.SendTo(contact, '揽月阁体验一把女王调教，由于是初次女王手下留情了，很专业手法拿捏得当，让人欲仙欲死。 喜欢的可以去尝试一下另类演绎.')
+				answer  = True
+			if strContent in '宜生堂':
+				bot.SendTo(contact, '今天看见宜生堂家发出广告，可儿休假回家，于是打算尝试一下传说中的少数民族可儿。很多狼友强烈推荐，孤风又评价4A，于是我怀着好奇心前往一探究竟。心中还是有一些忐忑，毕竟好多人说她家颜值一般，我也怕被坑，好在离家近，看看再说。一早约好房间，在客服细心带领下走进小区一路好多门禁，感觉比较安全，小区很安静，没有嘈杂的声音，让人很舒服。进到房间，接待是个很漂亮的美女，非常有气质，是我喜欢的类型，说话温柔，让我十分受用。先问接待是否做项目，美女婉然一笑，说：“小女不会。”遗憾遗憾，只能回家YY。美女端来一杯水，开始介绍项目，来小尺店当然选择最高项目899，诱惑一定很足。选好项目开始选技师，总共四个，两个在忙，先看了心儿，姑娘长得很清秀，身材非常苗条。但本次目标是可儿当然要先一睹芳容再做决定，于是唤来可儿。小美女让我一见钟情，颜值很高，青春可爱的面孔，凹凸有致的身材，眼神中还带有一分羞涩。当机立断选择可儿，心儿待下次品尝。姑娘出门报钟，这才有空观察环境，房间十分整洁，是我去过的所有家庭式会所里，算最干净的了，布置精心而又不显繁琐，小细节非常到位，一看就知道老板是个有情调的人。房间里飘荡着轻柔的音乐，灯光昏暗，屋内飘香，这就让人有一种荷尔蒙分泌的冲动。这时可儿轻轻敲门，进到屋里，再定睛欣赏，果然一清纯美女。上前主动帮我宽衣解带，我的心脏快要蹦出，大脑已经当机。随后穿上一次性内裤，牵着我的手走进浴室。姑娘试好水温，开始为我清洁每一寸肌肤，每一个凸起，期间还会温柔的询问水温是否合适。我的兄弟早已不争气的站立，想姑娘敬礼，险些再此缴枪。姑娘恰到好处的停手，开始擦拭身体。再此引领我来到房间，趴好，开始服务。按摩很舒服，指划也做得我全身颤抖，B面的诱惑已让我无法自拔，险些再此缴枪，随后被姑娘安抚下来，她解释说这是一起。B面带过不细说。转过A面，姑娘出门换装，我也可以平复一下心情，一会工夫，姑娘穿着一身火红性感来到房间，进屋完全变了个人，不是那清纯，眉目间多了一丝妩媚，在音乐的伴随下，开始舞动起腰肢，看得我再次敬礼致敬。正面项目简直可以用虐心来形容，看着美女在自己身上忙活，和她不时聊上两句，逗得她笑声不断，我自己却要强忍躁动的心，真相搂住她大战三百合，然而这时小尺店，自治收敛。在煎熬中完成了二起。终于开始了期待已久的释放，视觉，听觉，触觉多重刺激下，完成了自己心愿。全身早已瘫软，姑娘不知何时来到头顶，开始为我放松。闲聊了一会结束了今天的体验，下次体验心儿，嘿嘿。总体评分90，环境评分95，技师评分90（只见到2人），技师颜值90，技师身材90，客服妹子99（没事多聊聊，看能否拉她下水）。感谢群主提供的优质资源。')
+				answer  = True
+			if strContent in '百媚':
+				bot.SendTo(contact, '假期的最后一天，阳光正好，不容错过约会的佳期，当然也得选佳人。卡曼奇的美女们都是勤劳的小蜜蜂么，等着采蜜？跟客服约好了亚楠美女，主要是为了消除一下上次的紧张感，一回生二回熟啊。这次换了个楼，房间很大，浴缸不太适合淋浴。这次感觉果然比上次好多了，亚楠更好看了，身材也更诱人了。美眉服务还是那么温柔体贴，也拉近了彼此的距离。中途还被流氓客服侵入了房间，还被锁在外面，笨的可以。江湖上会有您的传说哦！一段美好的时光总是很短暂，如梦似幻！')
+				bot.SendTo(contact, '10.1前领着朋友去了趟北苑百媚。给朋友推荐的娅楠我选的红妆。红妆简直是我这种躺尸服务控的最好的一次体验。进门就抱住我上下摸索，没洗呢就深了好一会。然后拉进去洗澡也是各种撩。b面常规流程结束后，开始dl，至少dl了10多分钟，舔，嘬、钻，过程中还会漫游其他地方，然后突然独龙。弄的我欲生欲死。然后a面，正常流程不表，特点是深+都龙，真的是用心用意，全程深，整的我都有点不好意思了。总体来说妹子服务满分，颜值中等，不是特别年轻。我朋友是我推荐的娅楠，也是十分满意，邀约下次再去玩耍。')
+				bot.SendTo(contact, '约的莫莫，客服声音甜美，指路清晰，顺利来到地点，环境优雅舒服。莫莫是我喜欢的类型，主动、温柔、会挑逗。选了三套衣服，为了服务的连贯性只用了两套。从助浴开始，各种贴身诱惑，在我这么多年的经历里，莫莫是做的最好的。b面按摩不多说了，很舒服很到位。重点是艳舞，是真的艳舞，很多会所会把开始承诺的艳舞省略，因为会的人不多，跳好的就更少了，所以这应该是意外的收获，真的感觉很棒。互动出货完美，完事后很温柔的靠在一起聊天，姑娘情商很高，身体情感双重享受，感觉时间过得好快。其实关注你家有一段时间了，现在真后悔来晚了。希望其它的姑娘也像莫莫一样的完美，以后中尺店只认你一家了。')
+				answer  = True		
+			if strContent in '舞丝阁':
+				bot.SendTo(contact, '舞丝阁环境不错，大，敞亮，安静，私密性好。客服推荐娜娜瘦高挑，颜值不错，说话轻声细语。穿高跟鞋估计得180了，全程配合度好，各位在宇宙中心的可以光顾。')
+				bot.SendTo(contact, '雯雯颜值绝对90，身材和皮肤都超级好，滑溜溜如水，大胸翘臀细腰大长腿，说话很温柔，时不时还问我疼吗重不重，第一次体验广西妹子，还是很满意的，而且服务很卖力很轻柔，娇喘声让人着迷，具体细节就不说了……省略1w字。就是床太软我都觉得她很辛苦，心疼一下。而且没吃午饭就继续服务，我听她肚子都叫了快点让她吃点东西吧。水管赶紧修，下次必须来硬床……我的老腰')
+				answer  = True
+			if strContent in '90后主题':
+				bot.SendTo(contact, '昨儿后半夜，简单说说，让大家有个底儿。老小区，到的太晚了，需要看门的给开一下门，进出都需要的。。到了门口，客服没理我，我就推门进去了。。。。然后，3个MM穿着睡衣就从里屋出来了。。。。包括客服，后来才知道，3人在屋子玩儿自拍玩疯了。。。选的美美，我只能说跟空间照片相似度超过9成，绝不会有2个人的感觉。颜值85以上，身材95。。是我最喜欢的微乳，1.66的身高，不到90的体重，抱着真的很舒服。。服务细节不说，大家自行脑补，K，DL，相当完美。。真的，有种被蹂躏的赶脚。。完美体验，一句话形容美美，就是个假小子，忙来忙去的，总是闲不住的感觉。有时间，大家可以自行去体验一下，不会有错的。')
+				bot.SendTo(contact, '小磊对90特别熟，大家可以咨询磊哥')
+				answer  = True
+		if answer == False :
+			bot.SendTo(contact, '抱歉，该会所评论暂时没有收录。')
 	##查号	查号+空格+内容
-	elif strContent.startswith('查号')  :
+	if strContent.startswith('查号')  :
 		linesplit=strContent.split()
 		if len(linesplit)==2:
 			qqName = linesplit[0]
@@ -113,10 +200,9 @@ def onQQMessage(bot, contact, member, content):
 			else:
 				bot.SendTo(contact, '查询结果：'+qqNum +" 不在小分队")
 	##其它有趣			
-	elif strContent!="" :
-		if strContent in {'帮助','help'}:
-			bot.SendTo(contact, '句型 请问+空格+问题')
-			bot.SendTo(contact, '句型1 请问+空格+区域（地铁）有推荐么，例如 1 请问 望京有推荐么？ 2 请问 10号线有推荐么？')
+	if strContent!="" :
+		if strContent in {'帮助','help','问答'}:
+			bot.SendTo(contact, '句型1 请问+空格+区域（地铁）有吗，例如 1 请问 望京有吗？ 2 请问 10号线有吗？')
 			bot.SendTo(contact, '句型2 请问+空格+店名的特色，例如 1 请问 君悦的特色 2 宜生堂的特色')
 			bot.SendTo(contact, '句型3 请问+空格+店名在哪里，例如 1 请问 青丘在哪里 2 舞丝阁在哪里')
 			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 青丘 2 评论 百媚')
