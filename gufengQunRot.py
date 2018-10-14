@@ -94,6 +94,9 @@ def onQQMessage(bot, contact, member, content):
 			if strSpaName in '青丘':
 				bot.SendTo(contact, '望京南')
 				answer  = True
+			if strSpaName in '忆江南':
+				bot.SendTo(contact, '北苑')
+				answer  = True
 		if answer == False :
 			bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。可以访问我们的网站 http://www.gufengBJ.com ')
 			
@@ -130,6 +133,9 @@ def onQQMessage(bot, contact, member, content):
 				answer  = True
 			if strSpaName in '御盛阁？':
 				bot.SendTo(contact, '思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 ')
+				answer  = True
+			if strSpaName in '青塔':
+				bot.SendTo(contact, '双飞物美价优配合好， ')
 				answer  = True
 		if answer == False :
 			bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。')
