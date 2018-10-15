@@ -30,6 +30,19 @@ def outKeyWord(strKeyword,bot, contact):
 		bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录，我们将及时收录。可以访问我们的网站 http://www.gufengBJ.com')
 	return True
 
+def whereisSpaName(strSpaName,bot, contact):
+	filePath =  os.path.join("D:\qqRotQA","在哪.txt")
+	listStrSpa =[]
+	fileOpened=open(filePath,'r')
+	for sLine in fileOpened.readlines():
+		if sLine.strip() !="":
+			if strSpaName in sLine:
+				bot.SendTo(contact, sLine)
+				return True
+
+	return False
+
+
 def onQQMessage(bot, contact, member, content):
 	##请问 格式 请问+空格+关键词 
 	strContent = content
@@ -44,61 +57,70 @@ def onQQMessage(bot, contact, member, content):
 		if	len(content.strip().split())>=2:
 			strKeyWord = content.split()[1].strip()
 			outKeyWord(strKeyWord,bot, contact)
-
-	##各店位置
+   
+   	##各店位置
 	if strContent.strip()!="" and (strContent.startswith('在哪') or strContent.startswith('在哪里')  or strContent.endswith('在哪里')  or strContent.endswith('在哪') ) :
-		answer  = False
 		if	len(content.strip().split())>=2:
 			strSpaName = content.split()[1].strip()
 			if strContent.endswith('在哪里') or  strContent.endswith('在哪') :
 				strSpaName = content.split()[0].strip()
-			if strSpaName in '君悦':
-				bot.SendTo(contact, '通州双桥 ')
-				answer  = True
-			if strSpaName in '谧享？':
-				bot.SendTo(contact, '望京东湖渠')
-				answer  = True
-			if strSpaName in '百媚':
-				bot.SendTo(contact, '北苑 ')
-				answer  = True
-			if strSpaName in '宜生堂':
-				bot.SendTo(contact, '太阳宫 ')
-				answer  = True
-			if strSpaName in '花涧溪':
-				bot.SendTo(contact, '大屯路')
-				answer  = True
-			if strSpaName in '90后主题':
-				bot.SendTo(contact, '西城马连道 ')
-				answer  = True
-			if strSpaName in '御殿':
-				bot.SendTo(contact, '大屯路 ')
-				answer  = True
-			if strSpaName in '玉颜堂':
-				bot.SendTo(contact, '望京南地铁A口 ')
-				answer  = True
-			if strSpaName in '御盛阁':
-				bot.SendTo(contact, '西城月坛 ')
-				answer  = True
-			if strSpaName in '御仙阁':
-				bot.SendTo(contact, '紫竹桥 ')
-				answer  = True
-			if strSpaName in '樱沐子':
-				bot.SendTo(contact, '魏公村 ')
-				answer  = True
-			if strSpaName in '蜜桃会':
-				bot.SendTo(contact, '双井 ')
-				answer  = True
-			if strSpaName in '舞丝阁':
-				bot.SendTo(contact, '五道口')
-				answer  = True
-			if strSpaName in '青丘':
-				bot.SendTo(contact, '望京南')
-				answer  = True
-			if strSpaName in '忆江南':
-				bot.SendTo(contact, '北苑')
-				answer  = True
-		if answer == False :
-			bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。可以访问我们的网站 http://www.gufengBJ.com ')
+			if whereisSpaName(strSpaName,bot, contact)== False:
+				bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录，我们将及时收录。可以访问我们的网站 http://www.gufengBJ.com')
+
+
+	# if strContent.strip()!="" and (strContent.startswith('在哪') or strContent.startswith('在哪里')  or strContent.endswith('在哪里')  or strContent.endswith('在哪') ) :
+	# 	answer  = False
+	# 	if	len(content.strip().split())>=2:
+	# 		strSpaName = content.split()[1].strip()
+	# 		if strContent.endswith('在哪里') or  strContent.endswith('在哪') :
+	# 			strSpaName = content.split()[0].strip()
+	# 		if strSpaName in '君悦':
+	# 			bot.SendTo(contact, '通州双桥 ')
+	# 			answer  = True
+	# 		if strSpaName in '谧享？':
+	# 			bot.SendTo(contact, '望京东湖渠')
+	# 			answer  = True
+	# 		if strSpaName in '百媚':
+	# 			bot.SendTo(contact, '北苑 ')
+	# 			answer  = True
+	# 		if strSpaName in '宜生堂':
+	# 			bot.SendTo(contact, '太阳宫 ')
+	# 			answer  = True
+	# 		if strSpaName in '花涧溪':
+	# 			bot.SendTo(contact, '大屯路')
+	# 			answer  = True
+	# 		if strSpaName in '90后主题':
+	# 			bot.SendTo(contact, '西城马连道 ')
+	# 			answer  = True
+	# 		if strSpaName in '御殿':
+	# 			bot.SendTo(contact, '大屯路 ')
+	# 			answer  = True
+	# 		if strSpaName in '玉颜堂':
+	# 			bot.SendTo(contact, '望京南地铁A口 ')
+	# 			answer  = True
+	# 		if strSpaName in '御盛阁':
+	# 			bot.SendTo(contact, '西城月坛 ')
+	# 			answer  = True
+	# 		if strSpaName in '御仙阁':
+	# 			bot.SendTo(contact, '紫竹桥 ')
+	# 			answer  = True
+	# 		if strSpaName in '樱沐子':
+	# 			bot.SendTo(contact, '魏公村 ')
+	# 			answer  = True
+	# 		if strSpaName in '蜜桃会':
+	# 			bot.SendTo(contact, '双井 ')
+	# 			answer  = True
+	# 		if strSpaName in '舞丝阁':
+	# 			bot.SendTo(contact, '五道口')
+	# 			answer  = True
+	# 		if strSpaName in '青丘':
+	# 			bot.SendTo(contact, '望京南')
+	# 			answer  = True
+	# 		if strSpaName in '忆江南':
+	# 			bot.SendTo(contact, '北苑')
+	# 			answer  = True
+	# 	if answer == False :
+	# 		bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。可以访问我们的网站 http://www.gufengBJ.com ')
 			
 	##各店点评
 	if strContent.strip()!="" and (strContent.startswith('特色') or strContent.endswith('特色')  ) :
