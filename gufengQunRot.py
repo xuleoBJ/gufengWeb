@@ -4,13 +4,15 @@ import os
 import random
 
 def outPinglun(strSpaName,bot, contact):
-	filePath =  os.path.join("D:\qqRotQA\pinglun",strSpaName+".txt")
-	if os.path.exists(filePath):
-		fileOpened=open(filePath,'r')
-		for sLine in fileOpened.readlines():
-			if sLine.strip() !="":
-				bot.SendTo(contact, sLine)
-		return True
+	for root, dirs, files in os.walk("D:\qqRotQA\pinglun"): 
+		for curFile in files:  
+			if strSpaName in curFile:  
+				filePath =  os.path.join("D:\qqRotQA\pinglun",curFile)
+				fileOpened=open(filePath,'r')
+				for sLine in fileOpened.readlines():
+					if sLine.strip() !="":
+						bot.SendTo(contact, sLine)
+				return True
 	else:
 		return False
 
