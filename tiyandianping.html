@@ -1,111 +1,120 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>体验点评</title>
-  <meta http-equiv=Content-Type content="text/html; charset=gb2312">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="北京,spa,会所,丝足,养生,保健" />
-  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
-  <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113881659-1"></script>
-	<script type="text/javascript" src="globalGF.js"></script>
-	
-<style type="text/css" src="">
-.start5 {
-    background: url(picWeb/review_start.gif) no-repeat 0 -71px;
-    width: 58px;
-    height: 15px;
-}
-.start4 {
-    background: url(picWeb/review_start.gif) no-repeat 0 -57px;
-    width: 58px;
-    height: 15px;
-}
-.start3 {
-    background: url(picWeb/review_start.gif) no-repeat 0 -43px;
-    width: 58px;
-    height: 15px;
-}
-.score {
-    clear: both;
-    list-style: none;
-    margin: 0px 0 0 5px;
-    padding: 0;
-}
-</style>
+    <title>体验点评</title>
+    <meta http-equiv=Content-Type content="text/html; charset=gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="北京,spa,会所,丝足,养生,保健" />
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113881659-1"></script>
+    <script type="text/javascript" src="globalGF.js"></script>
+
+    <style type="text/css" src="">
+        .start5 {
+            background: url(picWeb/review_start.gif) no-repeat 0 -71px;
+            width: 58px;
+            height: 15px;
+        }
+
+        .start4 {
+            background: url(picWeb/review_start.gif) no-repeat 0 -57px;
+            width: 58px;
+            height: 15px;
+        }
+
+        .start3 {
+            background: url(picWeb/review_start.gif) no-repeat 0 -43px;
+            width: 58px;
+            height: 15px;
+        }
+
+        .score {
+            clear: both;
+            list-style: none;
+            margin: 0px 0 0 5px;
+            padding: 0;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <div class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
-                    <a href="index.html" class="navbar-brand">首页</a>
+            <div class="navbar-header">
+                <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+                <a href="index.html" class="navbar-brand">首页</a>
+            </div>
+            <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="tiyandianping.html">商家点评</a></li>
+                    <li><a href="youhui.html">优惠活动</a></li>
+                    <li><a href="qqQun.html">私密小群</a></li>
+                    <li><a href="fenxiang.html">精彩分享</a></li>
+                    <li><a href="adultReader.html">文学品读</a></li>
+                    <li><a href="youqingjieda.html">友情解答</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <h3>体验点评</h3>
+            <div class="card">
+                <p class="card-body">
+                    说明：综合群友体验反馈，客观在环境和服务方面做评估。而大家最关心的安全因素，因过于敏感不参与评估。
+                    评估会根据群友的新反馈信息进行调整，所有评估，仅供参考。
+                </p>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        君悦阁
+                    </h3>
                 </div>
-                <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
-                <div class="collapse navbar-collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="tiyandianping.html">商家点评</a></li>
-                        <li><a href="youhui.html">优惠活动</a></li>
-                        <li><a href="qqQun.html">私密小群</a></li>
-                        <li><a href="fenxiang.html">精彩分享</a></li>
-                        <li><a href="adultReader.html">文学品读</a></li>
-                        <li><a href="youqingjieda.html">友情解答</a></li>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>1 极致小尺享受 2 花式诱惑欲罢不能 3 手冰火特色十足 4 没有更好，只有最好。</p>
+                        <li>其它</li>
+                        <p>可同时接待4位客人</p>
                     </ul>
                 </div>
             </div>
-</div>
-<div class="container">
-  <div>
-    <h3>体验点评</h3> 
-    <div class="card">
-        <p class="card-body">
-            说明：综合群友体验反馈，客观在环境和服务方面做评估。而大家最关心的安全因素，因过于敏感不参与评估。
-                    评估会根据群友的新反馈信息进行调整，所有评估，仅供参考。
-        </p>
-    </div>
-    
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-              君悦阁
-          </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="score">        
-                <li>环境</li><li class="start5"></li> 
-                <li>服务</li><li class="start5"></li>
-                <li>点评</li>
-                <p>1 极致小尺享受 2 花式诱惑欲罢不能 3 手冰火特色十足 4 没有更好，只有最好。</p>
-                <li>其它</li>
-                <p>可同时接待4位客人</p>
-            </ul>
-        </div>
-      </div>
-	     <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            百媚私密会所
-          </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="score">        
-                <li>环境</li><li class="start5"></li> 
-                <li>服务</li><li class="start5"></li>
-                <li>点评</li>
-                <p>1 角色扮演 2 定制制服 3 诱惑舞蹈 4 安全性好，可开发票。</p>
-            </ul>                  
-        </div>
-    </div>
-      <!-- <div class="panel panel-default">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        百媚私密会所
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>1 角色扮演 2 定制制服 3 诱惑舞蹈 4 安全性好，可开发票。</p>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
                 润思
@@ -123,55 +132,57 @@
               
           </div>
       </div> -->
-      <!-- <div class="panel panel-default"> -->
-        <!-- <div class="panel-heading"> -->
-          <!-- <h3 class="panel-title"> -->
-              <!-- 春色撩人 -->
-          <!-- </h3> -->
-        <!-- </div> -->
-        <!-- <div class="panel-body"> -->
+            <!-- <div class="panel panel-default"> -->
+            <!-- <div class="panel-heading"> -->
+            <!-- <h3 class="panel-title"> -->
+            <!-- 春色撩人 -->
+            <!-- </h3> -->
+            <!-- </div> -->
+            <!-- <div class="panel-body"> -->
             <!-- <ul class="score">         -->
-                <!-- <li>环境</li><li class="start4"></li>  -->
-                <!-- <li>服务</li><li class="start5"></li> -->
-                <!-- <li>点评</li> -->
-                <!-- <p> 八爪椅，情趣制服，角色套餐。那样的水样缭绕，那样的美景良辰，优雅从容，成为唯一的生活态度。好评率100% </p> -->
+            <!-- <li>环境</li><li class="start4"></li>  -->
+            <!-- <li>服务</li><li class="start5"></li> -->
+            <!-- <li>点评</li> -->
+            <!-- <p> 八爪椅，情趣制服，角色套餐。那样的水样缭绕，那样的美景良辰，优雅从容，成为唯一的生活态度。好评率100% </p> -->
             <!-- </ul>   -->
-        <!-- </div> -->
-    <!-- </div> -->
-    <!-- <div class="panel panel-default"> -->
-        <!-- <div class="panel-heading"> -->
-          <!-- <h3 class="panel-title"> -->
-              <!-- 君丝语SPA -->
-          <!-- </h3> -->
-        <!-- </div> -->
-        <!-- <div class="panel-body"> -->
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="panel panel-default"> -->
+            <!-- <div class="panel-heading"> -->
+            <!-- <h3 class="panel-title"> -->
+            <!-- 君丝语SPA -->
+            <!-- </h3> -->
+            <!-- </div> -->
+            <!-- <div class="panel-body"> -->
             <!-- <ul class="score">         -->
-                <!-- <li>环境</li><li class="start4"></li>  -->
-                <!-- <li>服务</li><li class="start5"></li> -->
-                <!-- <li>点评</li> -->
-                <!-- <p> 照片和真人差别基本无差别。服务细节功夫到位，绝对值得体验！</p> -->
+            <!-- <li>环境</li><li class="start4"></li>  -->
+            <!-- <li>服务</li><li class="start5"></li> -->
+            <!-- <li>点评</li> -->
+            <!-- <p> 照片和真人差别基本无差别。服务细节功夫到位，绝对值得体验！</p> -->
             <!-- </ul>   -->
-           
-        <!-- </div> -->
-    <!-- </div> -->
- 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-              花涧溪
-          </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="score">        
-                <li>环境</li><li class="start5"></li> 
-                <li>服务</li><li class="start5"></li>
-                <li>点评</li>
-                <p> 客服和技师都是态度极好，妖娆妩媚。 </p>
-            </ul>  
-            
-        </div>
-    </div>
-      <!-- <div class="panel panel-default">
+
+            <!-- </div> -->
+            <!-- </div> -->
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        花涧溪
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p> 客服和技师都是态度极好，妖娆妩媚。 </p>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
                 含香阁
@@ -181,71 +192,79 @@
               环境干净整洁，停车方便（2小时1.5元，是一块五）。客服和技师服务态度都极好，有电动红床，秋千，情趣椅等比较大型的道具。
           </div>
       </div> -->
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                90后主题
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start4"></li> 
-                  <li>服务</li><li class="start5"></li>
-                  <li>点评</li>
-                  <p>1 安全性非常好 2 技师主打90后 3 态度好，服务标准化，浴室的服务有特色。</p>
-                  <li>其它</li>
-                  <p>可同时接待5位客人</p>
-              </ul>              
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                谧享spa
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start4"></li> 
-                  <li>服务</li><li class="start5"></li>
-                  <li>点评</li>
-                  <p>水床服务有特色</p>
-              </ul>                  
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                宜生堂
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start5"></li> 
-                  <li>服务</li><li class="start5"></li>
-                  <li>点评</li>
-                  <p> 男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。</p>
-              </ul>  
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                御殿spa
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start5"></li> 
-                  <li>服务</li><li class="start4"></li>
-                  <li>点评</li>
-                  <p>1 交通好 楼下是商务区，餐饮丰盛  2 环境非常好，非常好，3 点心小食供应非常贴心，饿了还可以让技师煮饺子和面条吃 4 好评率100%。</p>
-                  <li>其它</li>
-                  <p>可同时接待3-4位客人，楼下美食一条街，适合聚餐。</p>
-              </ul>  
-          </div>
-      </div>
-      <!-- <div class="panel panel-default">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        90后主题
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>1 安全性非常好 2 技师主打90后 3 态度好，服务标准化，浴室的服务有特色。</p>
+                        <li>其它</li>
+                        <p>可同时接待5位客人</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        谧享spa
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>水床服务有特色</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        宜生堂
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p> 男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        御殿spa
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start4"></li>
+                        <li>点评</li>
+                        <p>1 交通好 楼下是商务区，餐饮丰盛 2 环境非常好，非常好，3 点心小食供应非常贴心，饿了还可以让技师煮饺子和面条吃 4 好评率100%。</p>
+                        <li>其它</li>
+                        <p>可同时接待3-4位客人，楼下美食一条街，适合聚餐。</p>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
                 丝懂会
@@ -260,37 +279,41 @@
               </ul>    
           </div>
       </div> -->
-	   <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                青丘
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">    
-              <li>环境</li><li class="start4"></li> 
-              <li>服务</li><li class="start5"></li>
-              <li>点评</li>
-              <p>1 交通好，环境卫生非常好 2 鬼魅诱惑，各有千秋 3 好评率100%。</p>
-              </ul>    
-          </div>
-      </div>
-	   <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                蜜桃会
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">    
-              <li>环境</li><li class="start4"></li> 
-              <li>服务</li><li class="start5"></li>
-              <li>点评</li>
-              <p>从未享受如此贴心的服务。</p>
-              </ul>    
-          </div>
-      </div>
-	    <!-- <div class="panel panel-default">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        青丘
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>1 交通好，环境卫生非常好 2 鬼魅诱惑，各有千秋 3 好评率100%。</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        蜜桃会
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>从未享受如此贴心的服务。</p>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
                 东方玫瑰
@@ -305,106 +328,119 @@
               </ul>    
           </div>
       </div> -->
-	   <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                揽月阁
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">    
-              <li>环境</li><li class="start4"></li> 
-              <li>服务</li><li class="start4"></li>
-              <li>点评</li>
-              <p>1 独具特色的招牌操作 2 好评率100%。</p>
-              </ul>    
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                玉颜堂
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start4"></li> 
-                  <li>服务</li><li class="start5"></li>
-                  <li>点评</li>
-                  <p>有美人兮， 见之不忘。一日不见兮，思之如狂。 </p>
-              </ul>  
-          </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            御盛阁
-          </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="score">        
-                <li>环境</li><li class="start5"></li> 
-                <li>服务</li><li class="start4"></li>
-                <li>点评</li>
-                <p>思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 </p>
-            </ul>  
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        揽月阁
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start4"></li>
+                        <li>点评</li>
+                        <p>1 独具特色的招牌操作 2 好评率100%。</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        玉颜堂
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start4"></li>
+                        <li>服务</li>
+                        <li class="start5"></li>
+                        <li>点评</li>
+                        <p>有美人兮， 见之不忘。一日不见兮，思之如狂。 </p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        御盛阁
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start5"></li>
+                        <li>服务</li>
+                        <li class="start4"></li>
+                        <li>点评</li>
+                        <p>思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 </p>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        丝云阁
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start3"></li>
+                        <li>服务</li>
+                        <li class="start4"></li>
+                        <li>点评</li>
+                        <p> 1 南城的店 2 安全，舒适，价格适中 </p>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        流翠轩
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start3"></li>
+                        <li>服务</li>
+                        <li class="start4"></li>
+                        <li>点评</li>
+                        <p>1 价格亲民 2 技师漂亮。 </p>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        LL会所
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="score">
+                        <li>环境</li>
+                        <li class="start3"></li>
+                        <li>服务</li>
+                        <li class="start3"></li>
+                        <li>点评</li>
+                        <p> 技师更新快，经常会偶遇精品。 </p>
+                    </ul>
+
+                </div>
+            </div>
+
         </div>
     </div>
-
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                丝云阁
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start3"></li> 
-                  <li>服务</li><li class="start4"></li>
-                  <li>点评</li>
-                  <p> 1 南城的店 2 安全，舒适，价格适中 </p>
-              </ul>  
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-                流翠轩
-            </h3>
-          </div>
-          <div class="panel-body">
-              <ul class="score">        
-                  <li>环境</li><li class="start3"></li> 
-                  <li>服务</li><li class="start4"></li>
-                  <li>点评</li>
-                  <p>1 价格亲民 2 技师漂亮。 </p>
-              </ul>  
-              
-          </div>
-      </div>
-   
-     
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-              LL会所
-          </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="score">        
-                <li>环境</li><li class="start3"></li> 
-                <li>服务</li><li class="start3"></li>
-                <li>点评</li>
-                <p> 技师更新快，经常会偶遇精品。 </p>
-            </ul>  
-            
-        </div>
-    </div>
-
-  </div>
-</div> 
 </body>
 <div style="text-align: center;">
-<iframe src="footer.html" frameborder="0"  scrolling="no"></iframe>
+    <iframe src="footer.html" frameborder="0" scrolling="no"></iframe>
 </div>
+
 </html>
