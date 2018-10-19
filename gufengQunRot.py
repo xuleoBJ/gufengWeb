@@ -48,13 +48,13 @@ def whereisSpaName(strSpaName,bot, contact):
 def onQQMessage(bot, contact, member, content):
 	##请问 格式 请问+空格+关键词 
 	strContent = content
-	if strContent.strip()!="" and strContent.endswith('有吗') :
+	if strContent.strip()!="" and ( strContent.endswith('有吗') or strContent.endswith('附近') ):
 		answer  = False
 		if	len(content.strip().split())>=2:
 			strKeyWord = content.split()[0].strip()	
 			outKeyWord(strKeyWord,bot, contact)
 	
-	if strContent.strip()!="" and ( strContent.startswith('有吗') or strContent.startswith('请问') ) :
+	if strContent.strip()!="" and (  strContent.startswith('附近') or strContent.startswith('有吗') or strContent.startswith('请问')  ) :
 		answer  = False
 		if	len(content.strip().split())>=2:
 			strKeyWord = content.split()[1].strip()
@@ -179,7 +179,7 @@ def onQQMessage(bot, contact, member, content):
 		if len(linesplit)==2:
 			qqName = linesplit[0]
 			qqNum = linesplit[1]
-			filePath = "D:\qqRotQA\chahao\qqInfor.txt"
+			filePath = "D:\\qqRotQA\\chahao\\qqInfor.txt"
 			listLine=[]
 			searchYes = False
 			fileOpened=open(filePath,'r')
@@ -191,16 +191,28 @@ def onQQMessage(bot, contact, member, content):
 					break
 			if searchYes == True:
 				bot.SendTo(contact,'查询结果：'+ qqNum +' 是小分队成员，网名: '+ qqName)
-			else:
-				bot.SendTo(contact, '查询结果：'+qqNum +" 不在小分队")
+			
+			if searchYes == False:
+				filePath = "D:\\qqRotQA\\chahao\\blackName.txt"
+				fileOpened=open(filePath,'r')
+				for sLine in fileOpened.readlines():
+					splitLine=sLine.split()
+					if qqNum in  sLine:
+						bot.SendTo(contact,'查询结果：'+sLine)
+						searchYes = True
+						break
+			if searchYes == False:
+				bot.SendTo(contact,strContent+  ' 没有查到相关信息。')
 	##其它有趣			
 	if strContent!="" :
 		if strContent in {'帮助','help','问答'}:
 			bot.SendTo(contact, '输入 问答 或者 帮助 查看句型引导')
-			bot.SendTo(contact, '句型1 有吗+空格+关键词，请问+空格+关键词  例如 1 有吗 望京 2 请问 10号线')
+			bot.SendTo(contact, '句型1 有吗+空格+关键词，请问+空格+关键词 例如 1 有吗 望京 2 请问 5号线')
 			bot.SendTo(contact, '句型2 特色+空格+店名，例如 1 特色 君悦 2 特色 宜生堂')
 			bot.SendTo(contact, '句型3 在哪里+空格+店名，例如 1 在哪里 青丘 2 在哪里 舞丝阁')
-			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 青丘 2 评论 百媚')
+			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 百媚')
+			bot.SendTo(contact, '句型5 附近+空格+位置，例如 1 亚运村 附近 2 10号线 附近')
+
 
 		if strContent in '讲个笑话':
 			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "笑话.txt")
@@ -220,6 +232,15 @@ def onQQMessage(bot, contact, member, content):
 					lineList.append(sLine)
 			iNum = random.randint(0,len(lineList))
 			bot.SendTo(contact, lineList[iNum])
+		if strContent in '喝点鸡汤':
+			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "鸡汤.txt")
+			fileOpened=open(filePath,'r')
+			lineList = []
+			for sLine in fileOpened.readlines():
+				if sLine.strip() !="":
+					lineList.append(sLine)
+			iNum = random.randint(0,len(lineList))
+			bot.SendTo(contact, lineList[iNum])
 		if strContent in '雪哥最爱':
 			bot.SendTo(contact, '君悦冉冉')
 		if strContent == '君悦的婷婷怎么样？':
@@ -231,8 +252,8 @@ def onQQMessage(bot, contact, member, content):
 		if strContent in '当前时间':
 			localtime = time.strftime("%Y-%m-%d-%H:%M")
 			bot.SendTo(contact, "当前时间："+localtime)
-		if strContent in '群的网址是什么':
-			bot.SendTo(contact, 'www.gufengBJ.com')
+		if strContent in '群的网址' or strContent in '群的网站':
+			bot.SendTo(contact, 'htt://www.gufengBJ.com')
 		if strContent in {'搞活动的是哪几家?','搞活动的是哪家?'}:
 			bot.SendTo(contact, '玉颜堂')
 			bot.SendTo(contact, '君悦')
