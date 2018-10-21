@@ -166,7 +166,7 @@ def onQQMessage(bot, contact, member, content):
 
 	
 	##查号	评论	
-	if strContent.strip()!="" and strContent.startswith('评论') :
+	if strContent.strip()!="" and (strContent.startswith('评论') or strContent.startswith('评价')):
 		answer  = False
 		if	len(content.strip().split())>=2:
 			strSpaName = content.split()[1].strip()		
@@ -212,6 +212,7 @@ def onQQMessage(bot, contact, member, content):
 			bot.SendTo(contact, '句型3 在哪里+空格+店名，例如 1 在哪里 青丘 2 在哪里 舞丝阁')
 			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 百媚')
 			bot.SendTo(contact, '句型5 附近+空格+位置，例如 1 亚运村 附近 2 10号线 附近')
+			return 
 
 
 		if strContent in '讲个笑话':
