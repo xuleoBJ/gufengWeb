@@ -179,19 +179,11 @@ def onQQMessage(bot, contact, member, content):
 		if len(linesplit)==2:
 			qqName = linesplit[0]
 			qqNum = linesplit[1]
-			filePath = "D:\\qqRotQA\\chahao\\qqInfor.txt"
+			
 			listLine=[]
 			searchYes = False
-			fileOpened=open(filePath,'r')
-			for sLine in fileOpened.readlines():
-				splitLine=sLine.split()
-				if len(splitLine) >= 2 and splitLine[1]==qqNum:
-					qqName =  splitLine[0]
-					searchYes = True
-					break
-			if searchYes == True:
-				bot.SendTo(contact,'查询结果：'+ qqNum +' 是小分队成员，网名: '+ qqName)
-			
+
+			##搜索黑名单
 			if searchYes == False:
 				filePath = "D:\\qqRotQA\\chahao\\blackName.txt"
 				fileOpened=open(filePath,'r')
@@ -201,6 +193,20 @@ def onQQMessage(bot, contact, member, content):
 						bot.SendTo(contact,'查询结果：'+sLine)
 						searchYes = True
 						break
+			##搜索小分队			
+			if searchYes == False:
+				filePath = "D:\\qqRotQA\\chahao\\qqInfor.txt"
+				fileOpened=open(filePath,'r')
+				for sLine in fileOpened.readlines():
+					splitLine=sLine.split()
+					if len(splitLine) >= 2 and splitLine[1]==qqNum:
+						qqName =  splitLine[0]
+						searchYes = True
+						break
+				if searchYes == True:
+					bot.SendTo(contact,'查询结果：'+ qqNum +' 是小分队成员，网名: '+ qqName)
+				
+			
 			if searchYes == False:
 				bot.SendTo(contact,strContent+  ' 没有查到相关信息。')
 	##其它有趣			
@@ -213,8 +219,6 @@ def onQQMessage(bot, contact, member, content):
 			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 百媚')
 			bot.SendTo(contact, '句型5 附近+空格+位置，例如 1 亚运村 附近 2 10号线 附近')
 			return 
-
-
 		if strContent in '讲个笑话':
 			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "笑话.txt")
 			fileOpened=open(filePath,'r')
