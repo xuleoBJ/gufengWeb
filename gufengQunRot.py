@@ -208,7 +208,7 @@ def onQQMessage(bot, contact, member, content):
 				
 			
 			if searchYes == False:
-				bot.SendTo(contact,strContent+  ' 没有查到相关信息。')
+				bot.SendTo(contact,'查询结果：'+strContent+  ' 没有查到相关信息。')
 	##其它有趣			
 	if strContent!="" :
 		if strContent in {'帮助','help','问答'}:
