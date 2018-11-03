@@ -4,6 +4,10 @@ import os
 import random
 
 def outPinglun(strSpaName,bot, contact):
+	if str(contact.name) in ['A小分队','B小分队','C小分队','1K乐优美评论区']:
+		bot.SendTo(contact, '抱歉，本群暂时不公开评论，请加一风好友私聊评论。')
+		return False
+	
 	for root, dirs, files in os.walk("D:\qqRotQA\pinglun"): 
 		for curFile in files:  
 			if strSpaName in curFile:  
@@ -14,6 +18,7 @@ def outPinglun(strSpaName,bot, contact):
 						bot.SendTo(contact, sLine)
 				return True
 	else:
+		bot.SendTo(contact, '抱歉，该会所评论暂时没有收录。')
 		return False
 
 def outKeyWord(strKeyword,bot, contact):
@@ -24,7 +29,7 @@ def outKeyWord(strKeyword,bot, contact):
 		if sLine.strip() !="":
 			splitWord = sLine.split()
 			strSpaName = splitWord[0]
-			if strKeyword in sLine:
+			if (strKeyword in sLine ) and ('##' not in sLine ):
 				listStrSpa.append(strSpaName)
 	if len(listStrSpa)>=1:
 		bot.SendTo(contact, '  '.join(listStrSpa))
@@ -137,9 +142,6 @@ def onQQMessage(bot, contact, member, content):
 			if strSpaName in '谧享？':
 				bot.SendTo(contact, '水床AV')
 				answer  = True
-			if strSpaName in '百媚':
-				bot.SendTo(contact, '1 角色扮演 2 定制制服 3 诱惑舞蹈 4 安全性好，可开发票。 ')
-				answer  = True
 			if strSpaName in '宜生堂':
 				bot.SendTo(contact, '男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。 ')
 				answer  = True
@@ -172,7 +174,7 @@ def onQQMessage(bot, contact, member, content):
 			strSpaName = content.split()[1].strip()		
 			answer  = outPinglun(strSpaName,bot, contact)
 		if answer == False :
-			bot.SendTo(contact, '抱歉，该会所评论暂时没有收录。')
+			pass
 	##查号	查号+空格+内容
 	if strContent.startswith('查号')  :
 		linesplit=strContent.split()
