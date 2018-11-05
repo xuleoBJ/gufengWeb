@@ -3,15 +3,17 @@ import re
 import os
 import random
 
+dataDir = 'E:\\我的坚果云\\qqRotQA'
+
 def outPinglun(strSpaName,bot, contact):
 	if str(contact.name) in ['A小分队','B小分队','C小分队','1K乐优美评论区']:
 		bot.SendTo(contact, '抱歉，本群暂时不公开评论，请加一风好友私聊评论。')
 		return False
 	
-	for root, dirs, files in os.walk("D:\qqRotQA\pinglun"): 
+	for root, dirs, files in os.walk(os.path.join(dataDir,"pinglun")): 
 		for curFile in files:  
 			if strSpaName in curFile:  
-				filePath =  os.path.join("D:\qqRotQA\pinglun",curFile)
+				filePath =  os.path.join(dataDir,"pinglun",curFile)
 				fileOpened=open(filePath,'r')
 				for sLine in fileOpened.readlines():
 					if sLine.strip() !="":
@@ -22,7 +24,7 @@ def outPinglun(strSpaName,bot, contact):
 		return False
 
 def outKeyWord(strKeyword,bot, contact):
-	filePath =  os.path.join("D:\qqRotQA","关键词.txt")
+	filePath =  os.path.join(dataDir,"关键词.txt")
 	listStrSpa =[]
 	fileOpened=open(filePath,'r')
 	for sLine in fileOpened.readlines():
@@ -38,8 +40,7 @@ def outKeyWord(strKeyword,bot, contact):
 	return True
 
 def whereisSpaName(strSpaName,bot, contact):
-	filePath =  os.path.join("D:\qqRotQA","在哪.txt")
-	listStrSpa =[]
+	filePath =  os.path.join(dataDir,"在哪.txt")
 	fileOpened=open(filePath,'r')
 	for sLine in fileOpened.readlines():
 		if sLine.strip() !="":
@@ -50,6 +51,24 @@ def whereisSpaName(strSpaName,bot, contact):
 	return False
 
 
+def fenbuSpaName(bot, contact):
+	filePath =  os.path.join(dataDir,"在哪.txt")
+	fileOpened=open(filePath,'r')
+	##for sLine in fileOpened.readlines():
+	bot.SendTo(contact, ' '.join(fileOpened.readlines()))
+	return True
+
+def TeseSpaName(strSpaName,bot, contact):
+	filePath =  os.path.join(dataDir,"关键词.txt")
+	fileOpened=open(filePath,'r')
+	for sLine in fileOpened.readlines():
+		if sLine.strip() !="":
+			if strSpaName in sLine:
+				bot.SendTo(contact, sLine)
+				return True
+
+	return False
+	
 def onQQMessage(bot, contact, member, content):
 	##请问 格式 请问+空格+关键词 
 	strContent = content
@@ -74,97 +93,20 @@ def onQQMessage(bot, contact, member, content):
 			if whereisSpaName(strSpaName,bot, contact)== False:
 				bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录，我们将及时收录。可以访问我们的网站 http://www.gufengBJ.com')
 
-
-	# if strContent.strip()!="" and (strContent.startswith('在哪') or strContent.startswith('在哪里')  or strContent.endswith('在哪里')  or strContent.endswith('在哪') ) :
-	# 	answer  = False
-	# 	if	len(content.strip().split())>=2:
-	# 		strSpaName = content.split()[1].strip()
-	# 		if strContent.endswith('在哪里') or  strContent.endswith('在哪') :
-	# 			strSpaName = content.split()[0].strip()
-	# 		if strSpaName in '君悦':
-	# 			bot.SendTo(contact, '通州双桥 ')
-	# 			answer  = True
-	# 		if strSpaName in '谧享？':
-	# 			bot.SendTo(contact, '望京东湖渠')
-	# 			answer  = True
-	# 		if strSpaName in '百媚':
-	# 			bot.SendTo(contact, '北苑 ')
-	# 			answer  = True
-	# 		if strSpaName in '宜生堂':
-	# 			bot.SendTo(contact, '太阳宫 ')
-	# 			answer  = True
-	# 		if strSpaName in '花涧溪':
-	# 			bot.SendTo(contact, '大屯路')
-	# 			answer  = True
-	# 		if strSpaName in '90后主题':
-	# 			bot.SendTo(contact, '西城马连道 ')
-	# 			answer  = True
-	# 		if strSpaName in '御殿':
-	# 			bot.SendTo(contact, '大屯路 ')
-	# 			answer  = True
-	# 		if strSpaName in '玉颜堂':
-	# 			bot.SendTo(contact, '望京南地铁A口 ')
-	# 			answer  = True
-	# 		if strSpaName in '御盛阁':
-	# 			bot.SendTo(contact, '西城月坛 ')
-	# 			answer  = True
-	# 		if strSpaName in '御仙阁':
-	# 			bot.SendTo(contact, '紫竹桥 ')
-	# 			answer  = True
-	# 		if strSpaName in '樱沐子':
-	# 			bot.SendTo(contact, '魏公村 ')
-	# 			answer  = True
-	# 		if strSpaName in '蜜桃会':
-	# 			bot.SendTo(contact, '双井 ')
-	# 			answer  = True
-	# 		if strSpaName in '舞丝阁':
-	# 			bot.SendTo(contact, '五道口')
-	# 			answer  = True
-	# 		if strSpaName in '青丘':
-	# 			bot.SendTo(contact, '望京南')
-	# 			answer  = True
-	# 		if strSpaName in '忆江南':
-	# 			bot.SendTo(contact, '北苑')
-	# 			answer  = True
-	# 	if answer == False :
-	# 		bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。可以访问我们的网站 http://www.gufengBJ.com ')
-			
+	##友商分布
+	if strContent.strip()!="" and (strContent.startswith('友商') ) :
+		fenbuSpaName(bot, contact)
+		
+		
 	##各店点评
-	if strContent.strip()!="" and (strContent.startswith('特色') or strContent.endswith('特色')  ) :
+	if strContent.strip()!="" and (strContent.startswith('特色') or strContent.startswith('请问')  ) :
 		answer  = False
 		if	len(strContent.strip().split())>=2:
 			strSpaName = strContent.split()[1].strip()
 			if strContent.endswith('特色') :
 				strSpaName = content.split()[0].strip()
-			if strSpaName in '君悦':
-				bot.SendTo(contact, '1 极致小尺享受 2 花式诱惑欲罢不能 3 手冰火特色十足 ')
-				answer  = True
-			if strSpaName in '谧享？':
-				bot.SendTo(contact, '水床AV')
-				answer  = True
-			if strSpaName in '宜生堂':
-				bot.SendTo(contact, '男士养生好店，环境卫生极好，客服非常用心，三起三落的高端养生项目值得体验，好评率100%。 ')
-				answer  = True
-			if strSpaName in '花涧溪':
-				bot.SendTo(contact, '态度极好，妩媚妖娆 ')
-				answer  = True
-			if strSpaName in '90后主题':
-				bot.SendTo(contact, '1 安全性非常好 2 技师主打90后 3 态度好，服务标准化，浴室的服务有特色。 ')
-				answer  = True
-			if strSpaName in '御殿？':
-				bot.SendTo(contact, '环境非常好，非常好 ')
-				answer  = True
-			if strSpaName in '玉颜堂？':
-				bot.SendTo(contact, '有美人兮， 见之不忘。一日不见兮，思之如狂。 ')
-				answer  = True
-			if strSpaName in '御盛阁？':
-				bot.SendTo(contact, '思悠悠，恨悠悠， 恨到归时方始休，月明人倚楼。 ')
-				answer  = True
-			if strSpaName in '青塔':
-				bot.SendTo(contact, '双飞物美价优配合好， ')
-				answer  = True
-		if answer == False :
-			bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录。')
+			if TeseSpaName(strSpaName,bot, contact)== False:
+				bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录，我们将及时收录。可以访问我们的网站 http://www.gufengBJ.com')
 
 	
 	##查号	评论	
@@ -187,7 +129,7 @@ def onQQMessage(bot, contact, member, content):
 
 			##搜索黑名单
 			if searchYes == False:
-				filePath = "D:\\qqRotQA\\chahao\\blackName.txt"
+				filePath = os.path.join(dataDir,"chahao","blackName.txt")
 				fileOpened=open(filePath,'r')
 				for sLine in fileOpened.readlines():
 					splitLine=sLine.split()
@@ -197,7 +139,7 @@ def onQQMessage(bot, contact, member, content):
 						break
 			##搜索小分队			
 			if searchYes == False:
-				filePath = "D:\\qqRotQA\\chahao\\qqInfor.txt"
+				filePath = os.path.join(dataDir,"chahao","qqInfor.txt")
 				fileOpened=open(filePath,'r')
 				for sLine in fileOpened.readlines():
 					splitLine=sLine.split()
@@ -222,7 +164,7 @@ def onQQMessage(bot, contact, member, content):
 			bot.SendTo(contact, '句型5 附近+空格+位置，例如 1 亚运村 附近 2 10号线 附近')
 			return 
 		if strContent in '讲个笑话':
-			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "笑话.txt")
+			filePath = os.path.join(dataDir,"xiaohua", "笑话.txt")
 			fileOpened=open(filePath,'r')
 			lineList = []
 			for sLine in fileOpened.readlines():
@@ -231,7 +173,7 @@ def onQQMessage(bot, contact, member, content):
 			iNum = random.randint(0,len(lineList))
 			bot.SendTo(contact, lineList[iNum])
 		if strContent in '讲个成人笑话':
-			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "成人笑话.txt")
+			filePath = os.path.join(dataDir,"xiaohua", "成人笑话.txt")
 			fileOpened=open(filePath,'r')
 			lineList = []
 			for sLine in fileOpened.readlines():
@@ -240,7 +182,7 @@ def onQQMessage(bot, contact, member, content):
 			iNum = random.randint(0,len(lineList))
 			bot.SendTo(contact, lineList[iNum])
 		if strContent in '喝点鸡汤':
-			filePath = os.path.join("D:\\qqRotQA\\xiaohua", "鸡汤.txt")
+			filePath = os.path.join(dataDir,"xiaohua", "鸡汤.txt")
 			fileOpened=open(filePath,'r')
 			lineList = []
 			for sLine in fileOpened.readlines():
@@ -264,8 +206,6 @@ def onQQMessage(bot, contact, member, content):
 		if strContent in {'搞活动的是哪几家?','搞活动的是哪家?'}:
 			bot.SendTo(contact, '玉颜堂')
 			bot.SendTo(contact, '君悦')
-		if strContent in '蜜桃会的哪个美女做饭好吃':
-			bot.SendTo(contact, '客服爱做饭，做饭也好吃')
 
 
 	
