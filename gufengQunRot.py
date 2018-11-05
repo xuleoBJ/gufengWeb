@@ -72,6 +72,14 @@ def TeseSpaName(strSpaName,bot, contact):
 def onQQMessage(bot, contact, member, content):
 	##请问 格式 请问+空格+关键词 
 	strContent = content
+	if strContent.strip()!="" and strContent in {'帮助','help','问答'}:
+			bot.SendTo(contact, '--输入 问答 或者 帮助 查看句型引导')
+			bot.SendTo(contact, '--句型1 有吗+空格+关键词，请问+空格+关键词 例如 1 有吗 望京 2 请问 5号线 3 请问 新友商 4 请问 服务好')
+			bot.SendTo(contact, '--句型2 特色+空格+店名，请问+空格+店名 例如 1 特色 君悦 2 请问 宜生堂')
+			bot.SendTo(contact, '--句型3 在哪里+空格+店名，附近+空格+位置 例如 1 在哪 青丘 2 在哪 舞丝阁 3 例如 3 亚运村 附近' )
+			bot.SendTo(contact, '--句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 樱沐子')
+			bot.SendTo(contact, '--句型5 输入 友商 查询圈内全部友商，输入 请问 新友商 ， 查看新友商')
+			return 
 	if strContent.strip()!="" and ( strContent.endswith('有吗') or strContent.endswith('附近') ):
 		answer  = False
 		if	len(content.strip().split())>=2:
@@ -96,6 +104,7 @@ def onQQMessage(bot, contact, member, content):
 	##友商分布
 	if strContent.strip()!="" and (strContent.startswith('友商') ) :
 		fenbuSpaName(bot, contact)
+		return
 		
 		
 	##各店点评
@@ -155,14 +164,6 @@ def onQQMessage(bot, contact, member, content):
 				bot.SendTo(contact,'查询结果：'+strContent+  ' 没有查到相关信息。')
 	##其它有趣			
 	if strContent!="" :
-		if strContent in {'帮助','help','问答'}:
-			bot.SendTo(contact, '输入 问答 或者 帮助 查看句型引导')
-			bot.SendTo(contact, '句型1 有吗+空格+关键词，请问+空格+关键词 例如 1 有吗 望京 2 请问 5号线')
-			bot.SendTo(contact, '句型2 特色+空格+店名，例如 1 特色 君悦 2 特色 宜生堂')
-			bot.SendTo(contact, '句型3 在哪里+空格+店名，例如 1 在哪里 青丘 2 在哪里 舞丝阁')
-			bot.SendTo(contact, '句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 百媚')
-			bot.SendTo(contact, '句型5 附近+空格+位置，例如 1 亚运村 附近 2 10号线 附近')
-			return 
 		if strContent in '讲个笑话':
 			filePath = os.path.join(dataDir,"xiaohua", "笑话.txt")
 			fileOpened=open(filePath,'r')
@@ -181,7 +182,7 @@ def onQQMessage(bot, contact, member, content):
 					lineList.append(sLine)
 			iNum = random.randint(0,len(lineList))
 			bot.SendTo(contact, lineList[iNum])
-		if strContent in '喝点鸡汤':
+		if  '鸡汤' in strContent :
 			filePath = os.path.join(dataDir,"xiaohua", "鸡汤.txt")
 			fileOpened=open(filePath,'r')
 			lineList = []
