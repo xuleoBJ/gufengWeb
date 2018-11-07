@@ -66,7 +66,6 @@ def TeseSpaName(strSpaName,bot, contact):
 			if strSpaName in sLine:
 				bot.SendTo(contact, sLine)
 				return True
-
 	return False
 	
 def onQQMessage(bot, contact, member, content):
@@ -75,17 +74,19 @@ def onQQMessage(bot, contact, member, content):
 	if strContent.strip()!="" and strContent in {'帮助','help','问答'}:
 			bot.SendTo(contact, '--输入 问答 或者 帮助 查看句型引导')
 			bot.SendTo(contact, '--句型1 有吗+空格+关键词，请问+空格+关键词 例如 1 有吗 望京 2 请问 5号线 3 请问 新友商 4 请问 服务好')
-			bot.SendTo(contact, '--句型2 特色+空格+店名，请问+空格+店名 例如 1 特色 君悦 2 请问 宜生堂')
+			bot.SendTo(contact, '--句型2 特色+空格+店名，点评+空格+店名 例如 1 特色 君悦 2 点评 宜生堂')
 			bot.SendTo(contact, '--句型3 在哪里+空格+店名，附近+空格+位置 例如 1 在哪 青丘 2 在哪 舞丝阁 3 例如 3 亚运村 附近' )
 			bot.SendTo(contact, '--句型4 评论+空格+店名，例如 1 评论 玉颜堂 2 评论 樱沐子')
 			bot.SendTo(contact, '--句型5 输入 友商 查询圈内全部友商，输入 请问 新友商 ， 查看新友商')
-			return 
+			return  
 	if strContent.strip()!="" and ( strContent.endswith('有吗') or strContent.endswith('附近') ):
 		answer  = False
 		if	len(content.strip().split())>=2:
 			strKeyWord = content.split()[0].strip()	
 			outKeyWord(strKeyWord,bot, contact)
 	
+	
+	##关键词
 	if strContent.strip()!="" and (  strContent.startswith('附近') or strContent.startswith('有吗') or strContent.startswith('请问')  ) :
 		answer  = False
 		if	len(content.strip().split())>=2:
@@ -106,16 +107,15 @@ def onQQMessage(bot, contact, member, content):
 		fenbuSpaName(bot, contact)
 		return
 		
-		
-	##各店点评
-	if strContent.strip()!="" and (strContent.startswith('特色') or strContent.startswith('请问')  ) :
-		answer  = False
+	##点评
+	if strContent.strip()!="" and (strContent.startswith('特色') or strContent.startswith('请问') or strContent.startswith('点评') ) :
 		if	len(strContent.strip().split())>=2:
 			strSpaName = strContent.split()[1].strip()
 			if strContent.endswith('特色') :
 				strSpaName = content.split()[0].strip()
 			if TeseSpaName(strSpaName,bot, contact)== False:
 				bot.SendTo(contact, '抱歉，您的问题和答案暂时没有收录，我们将及时收录。可以访问我们的网站 http://www.gufengBJ.com')
+		return
 
 	
 	##查号	评论	
@@ -126,6 +126,7 @@ def onQQMessage(bot, contact, member, content):
 			answer  = outPinglun(strSpaName,bot, contact)
 		if answer == False :
 			pass
+			
 	##查号	查号+空格+内容
 	if strContent.startswith('查号')  :
 		linesplit=strContent.split()
