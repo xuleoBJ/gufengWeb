@@ -1,0 +1,10 @@
+{
+    "name": "点击排行版，新会员",
+    "brief": "1、电脑端右侧显示，手机不显示</br> 2、排行版，新会员</br> 3、八彩五月网制作<a href='http://www.8c5.cn'  target='_blank'><span style='color:red;'><b>www.8c5.cn</b></span></a><br>4、使用有问题联系客服QQ/微信：312215120 <br>",
+    "version": "1.2",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "dependencies": []
+}

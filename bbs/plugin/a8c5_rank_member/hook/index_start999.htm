@@ -1,0 +1,87 @@
+<!-- <div class="row">
+    <div class="picture_list_container">
+        <ul class="threadlist">
+			<li class="trans_3 " data-href="thread-114.htm" data-tid="114">
+                <a href="https://www.h5h4.com/thread-114.htm" class="pic"><sup class="icon">热门</sup>
+					<figure class="effect-sadie">
+					  <img src="plugin/a8c5_rank_member/img/170324f57wjjnhh5ik7hh7.jpg" alt="" title="" class="lazy">
+					  <figcaption>
+						<h2>神探蒲松龄.2019.1080P.X264.ACC.国语中字.无水印<br><span>xiaoying 28天前<br>
+						<i class="icon-comment-o"></i> 0</span></h2>
+						<p>◎译名KnightofShadows:WalkerBetweenHalfworlds/TheKnig…</p>
+						<em><img class="avatar-3" src="plugin/a8c5_rank_member/img/avatar.png"></em>
+					  </figcaption>
+					</figure>
+				</a>
+				<h2 class="title"><a href="https://www.h5h4.com/thread-114.htm" title="神探蒲松龄.2019.1080P.X264.ACC.国语中字.无水印">神探蒲松龄.2019.1080P.X264.ACC.国语中字.无水印</a></h2>
+				<div class="date_pfen">
+					<time datetime="2019-02-18 17:03:24">
+					<p class="date">
+					<span class="float-right"><i class="icon-comment-o"></i> 0</span>
+					<span><i class="icon icon-clock-o"></i> 28天前</span>
+					</p>
+				    </time>
+				</div>
+            </li> 
+        </ul>
+    </div>
+</div> -->
+
+
+<div class="row">
+<?php 
+if($threadlist) { 
+	$have_allowtop = 0;
+	foreach($threadlist as &$_thread) {
+		$_thread['allowtop'] = forum_access_mod($_thread['fid'], $gid, 'allowtop');
+		if($_thread['allowtop']) $have_allowtop = 1;
+	}
+}
+?>
+
+ <div class="picture_list_container">
+
+<?php if($threadlist) { foreach($threadlist as &$_thread) { ?>
+<ul class="threadlist">
+			<li class="trans_3" data-href="<?php echo url("thread-$_thread[tid]");?>" data-tid="<?php echo $_thread['tid'];?>">
+                <a href="<?php echo url("user-$_thread[uid]");?>" class="pic"><sup class="icon">热门</sup>
+					<figure class="effect-sadie">
+						<?php
+							$post = post_read($_thread['firstpid']);
+							$_message = mb_substr(strip_tags($post['message']), '0', '100', 'utf-8')."…";
+							$patten = "/src=[\'\"]?([^\s>\"\']+)[\'\"]/isU";
+							if (preg_match($patten, $post['message'], $arr)) {
+							if (!empty($arr[1])) {
+							echo '<a href="'.$_thread['url'].'"><img src="'. $arr[1] .'" class="lazy" alt="'.$_thread['subject'].'" onerror="this.src=\'plugin/oddfox_theme_black/images/errpic.png\'" /></a>';
+							}
+							}else{
+							echo '<a href="'.$_thread['url'].'"><img src="plugin/oddfox_theme_black/images/errpic.png" class="lazy" alt="'.$_thread['subject'].'" /></a>';
+							}
+						?>
+					  
+					  <figcaption>
+						<h2><?php echo $_thread['subject'];?><br><span>xiaoying <?php echo $_thread['create_date_fmt'];?><br>
+						<!-- <i class="icon-comment-o"></i> 0</span></h2> -->
+						<!-- <p>◎译名KnightofShadows:WalkerBetweenHalfworlds/TheKnig…</p> -->
+						<!-- <em><img class="avatar-3" src="plugin/a8c5_rank_member/img/avatar.png"></em> -->
+					  </figcaption>
+					</figure>
+				</a>
+				<h2 class="title"><a href="<?php echo url("thread-$_thread[tid]");?>" title="<?php echo $_thread['subject'];?>"><?php echo $_thread['subject'];?></a></h2>
+				<div class="date_pfen">
+					<time datetime="2019-02-18 17:03:24">
+					<p class="date">
+					<span class="float-right"><i class="icon-comment-o"></i> 0</span>
+					<span><i class="icon icon-clock-o"></i> <?php echo $_thread['create_date_fmt'];?></span>
+					</p>
+				    </time>
+				</div>
+            </li>
+</ul>
+					<?php }} else { ?>
+					<li>
+						<div><?php echo lang('none');?></div>
+					</li>
+					<?php } ?>
+</div>
+</div>

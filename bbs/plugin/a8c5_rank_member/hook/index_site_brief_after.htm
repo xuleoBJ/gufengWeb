@@ -1,0 +1,75 @@
+<div class="card">
+	<div class="card-header text-bold">总排行</div>
+	<div class="card-body small" style="padding: 0.5rem;">
+		<?php
+			$toplist = get_site_top_list();
+			echo '<div class="site-top"><ul class="site-list-ul">';
+			foreach ($toplist as $key => $value){
+				$_class = $key < 3 ? 'top_span_red' : 'top_span_gray';
+				echo '<li><span class="'.$_class.'">'.($key+1).'</span><a href="thread-'.$value['tid'].'.htm">'.$value['subject'].'</a></li>';
+			}
+			echo '</ul></div>';
+		?>
+	</div>
+</div>
+<div class="card">
+	<div class="card-header text-bold">新会员</div>
+	<div class="card-body small" style="padding: 0.5rem;">
+		<?php 
+		$nIndex = 0;
+		$userlist = get_site_new_user();
+        foreach ($userlist as $user) {
+			if(++$nIndex>16)break;
+			$user_avatarimg = 'view/img/avatar.png';
+			$user['avatar']!=0 && $user_avatarimg = $conf['upload_url'].'avatar/000/'.$user['uid'].'.png?'.$user['avatar'];
+			if($cdn_enable)$user_avatarimg = $theme_plugin['cdn_url'].$user_avatarimg;
+        ?>
+		<div class="col-xs-4 text-center mb-3">
+			<a class="tt" href="<?php echo url("user-$user[uid]");?>"
+				data-toggle="tooltip" title="<?php echo $user['dname'];?>">
+				<img src="<?php echo $user_avatarimg; ?>" alt="<?php echo $user['dname'];?>" width="39" height="39" class="img-circle"><br>
+			<?php echo $user['dname'];?>
+			</a>
+		</div>
+		<?php } ?>
+	</div>
+</div>
+<?php
+
+function console_log($text){
+    echo '<script type="text/javascript">console.log(\'log:'.$text.'\');</script>';
+}
+
+//获取回复最多的文章，默认10篇
+function get_site_top_list(){
+	$result = cache_get('get_site_top_list');
+	if(empty($result)){
+		$result = db_find('thread', array(), array('views'=>2));//按views倒序
+		cache_set('get_site_top_list',$result,86400);//有效期1天
+	}
+	return $result;
+}
+
+function get_site_user_order_by_gold($num=20){
+    //先获取用户列表
+	$userlist = db_find('user', array(), array('golds'=>2), 1, $num, 'uid');
+	 foreach ($userlist as $user) {
+		 echo '用户名:'.$user['username'].'积分:'.$user['credits'].'金币:'.$user['golds'].'<br/>';
+	 }
+}
+
+function get_site_new_user($num=16){
+    //先获取用户列表
+    $userlist = cache_get('get_site_new_user');
+    if(empty($userlist)){
+        $userlist = db_find('user', array(), array('uid'=>-1), 1, $num, 'uid');
+        foreach ($userlist as &$user) {
+            $username = $user['username'];
+            xn_strlen($username)>4 && $username = xn_substr($username, 0, 4);
+            $user['dname'] = $username;
+        }
+        cache_set('get_site_new_user',$userlist,86400);//有效期1天
+    }
+    return $userlist;
+}
+?>

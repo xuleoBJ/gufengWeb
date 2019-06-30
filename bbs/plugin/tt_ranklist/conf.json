@@ -1,0 +1,11 @@
+{
+    "name": "兔兔排行榜",
+    "brief": "兔兔排行榜，发帖量、回帖量、经验值、金币、人民币排行榜！",
+    "version": "1.01",
+    "bbs_version": "4.0.4",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

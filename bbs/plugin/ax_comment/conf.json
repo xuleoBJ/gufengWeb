@@ -1,0 +1,12 @@
+{
+    "name": "最新评论小插件",
+    "brief": "本插件由<a href='http://www.432k.cn' style='color:red'>开发者联盟</a>制作，定制、包站、仿站专业制作联系QQ：277177818",
+    "version": "1.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 0,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": [],
+    "username": ""
+}

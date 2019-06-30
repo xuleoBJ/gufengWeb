@@ -1,0 +1,10 @@
+{
+    "name": "精美句子",
+    "brief": "在侧栏随机显示精美句子，数据来自天行数据（www.tianapi.com）。",
+    "version": "1.0",
+    "bbs_version": "4.0.3",
+    "installed": 1,
+    "enable": 0,
+    "hooks_rank": [],
+    "dependencies": "天行数据"
+}

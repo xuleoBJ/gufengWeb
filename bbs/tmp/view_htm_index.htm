@@ -1,0 +1,209 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+
+
+<div class="row">
+	<div class="col-lg-9 main">
+		
+		<div class="card card-threadlist">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item">
+						<a class="nav-link <?php echo $active == 'default' ? 'active' : '';?>" href="./<?php echo url("$route");?>"><?php echo lang('new_thread');?></a>
+					</li>
+										<li class="nav-item">
+						<a class="nav-link  <?php echo $active == 'digest' ? 'active' : '';?>" href="<?php echo url("$route-0-1");?>"><?php echo lang('digest_thread');?></a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body">
+				<ul class="list-unstyled threadlist mb-0">
+					
+					<?php include _include(APP_PATH.'view/htm/thread_list.inc.htm');?>
+					
+				</ul>
+			</div>
+		</div>
+		
+		<?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+		
+		
+		<nav class="my-3"><ul class="pagination justify-content-center flex-wrap"><?php echo $pagination; ?></ul></nav>
+		
+	</div>
+	<div class="col-lg-3 d-none d-lg-block aside">
+		<a role="button" class="btn btn-primary btn-block mb-3" href="<?php echo url('thread-create-'.$fid);?>"><?php echo lang('thread_create_new');?></a>
+		
+		<div class="card card-site-info">
+			
+			<div class="m-3">
+				<h5 class="text-center"><?php echo $conf['sitename'];?></h5>
+				<div class="small line-height-3"><?php echo $conf['sitebrief'];?></div>
+			</div>
+			<div class="card-footer p-2">
+				<table class="w-100 small">
+					<tr align="center">
+						<td>
+							<span class="text-muted"><?php echo lang('threads');?></span><br>
+							<b><?php echo $runtime['threads'];?></b>
+						</td>
+						<td>
+							<span class="text-muted"><?php echo lang('posts');?></span><br>
+							<b><?php echo $runtime['posts'];?></b>
+						</td>
+						<td>
+							<span class="text-muted"><?php echo lang('users');?></span><br>
+							<b><?php echo $runtime['users'];?></b>
+						</td>
+						<?php if($runtime['onlines'] > 0) { ?>
+						<td>
+							<span class="text-muted"><?php echo lang('online');?></span><br>
+							<b><?php echo $runtime['onlines'];?></b>
+						</td>
+						<?php } ?>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		<div class="form-group">
+	<form action="<?php echo url('search');?>" id="search_form">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="<?php echo lang('keyword');?>" name="keyword">
+			<div class="input-group-append">
+				<button class="btn btn-primary" type="submit"><?php echo lang('search');?></button>
+			</div>
+		</div>
+	</form>
+</div><div class="card">
+	<div class="card-header text-bold">总排行</div>
+	<div class="card-body small" style="padding: 0.5rem;">
+		<?php
+			$toplist = get_site_top_list();
+			echo '<div class="site-top"><ul class="site-list-ul">';
+			foreach ($toplist as $key => $value){
+				$_class = $key < 3 ? 'top_span_red' : 'top_span_gray';
+				echo '<li><span class="'.$_class.'">'.($key+1).'</span><a href="thread-'.$value['tid'].'.htm">'.$value['subject'].'</a></li>';
+			}
+			echo '</ul></div>';
+		?>
+	</div>
+</div>
+<div class="card">
+	<div class="card-header text-bold">新会员</div>
+	<div class="card-body small" style="padding: 0.5rem;">
+		<?php 
+		$nIndex = 0;
+		$userlist = get_site_new_user();
+        foreach ($userlist as $user) {
+			if(++$nIndex>16)break;
+			$user_avatarimg = 'view/img/avatar.png';
+			$user['avatar']!=0 && $user_avatarimg = $conf['upload_url'].'avatar/000/'.$user['uid'].'.png?'.$user['avatar'];
+			if($cdn_enable)$user_avatarimg = $theme_plugin['cdn_url'].$user_avatarimg;
+        ?>
+		<div class="col-xs-4 text-center mb-3">
+			<a class="tt" href="<?php echo url("user-$user[uid]");?>"
+				data-toggle="tooltip" title="<?php echo $user['dname'];?>">
+				<img src="<?php echo $user_avatarimg; ?>" alt="<?php echo $user['dname'];?>" width="39" height="39" class="img-circle"><br>
+			<?php echo $user['dname'];?>
+			</a>
+		</div>
+		<?php } ?>
+	</div>
+</div>
+<?php
+
+function console_log($text){
+    echo '<script type="text/javascript">console.log(\'log:'.$text.'\');</script>';
+}
+
+//获取回复最多的文章，默认10篇
+function get_site_top_list(){
+	$result = cache_get('get_site_top_list');
+	if(empty($result)){
+		$result = db_find('thread', array(), array('views'=>2));//按views倒序
+		cache_set('get_site_top_list',$result,86400);//有效期1天
+	}
+	return $result;
+}
+
+function get_site_user_order_by_gold($num=20){
+    //先获取用户列表
+	$userlist = db_find('user', array(), array('golds'=>2), 1, $num, 'uid');
+	 foreach ($userlist as $user) {
+		 echo '用户名:'.$user['username'].'积分:'.$user['credits'].'金币:'.$user['golds'].'<br/>';
+	 }
+}
+
+function get_site_new_user($num=16){
+    //先获取用户列表
+    $userlist = cache_get('get_site_new_user');
+    if(empty($userlist)){
+        $userlist = db_find('user', array(), array('uid'=>-1), 1, $num, 'uid');
+        foreach ($userlist as &$user) {
+            $username = $user['username'];
+            xn_strlen($username)>4 && $username = xn_substr($username, 0, 4);
+            $user['dname'] = $username;
+        }
+        cache_set('get_site_new_user',$userlist,86400);//有效期1天
+    }
+    return $userlist;
+}
+?>
+
+	</div>
+</div>
+
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card card-friendlink link-bottom">
+			<div class="card-header">在线用户--<?php
+			$arronline=assoc_unique(online_list_cache(),'uid');//获取在线用户信息并且根据uid值去重复
+			echo count($arronline);
+			?></div>
+			<div class="card-body p-a-sm p-b-xs">
+					<?php 
+$rew=$conf['url_rewrite_on']==0 ? '?':'';//伪静态
+foreach($arronline as $online_user) { //Changed By Eveson 
+echo "<a class=\"mr-2 float-left\" href=\"".getlistn().$rew."user-{$online_user['uid']}.htm\" target=\"_blank\" >{$online_user['username']}</a>";//此处感觉应该引入js或者html文件
+}
+function assoc_unique($arr, $key) {  //根据指定的key值为数组去重
+        $tmp_arr = array();  
+        foreach($arr as $k => $v) {  
+            if(in_array($v[$key], $tmp_arr)) {  
+                unset($arr[$k]);  
+            } else {  
+                $tmp_arr[] = $v[$key];  
+            }  
+        }  
+        sort($arr);  
+        return $arr;  
+} 
+function getlistn(){//返回修罗主程序所处相对目录 
+return substr($_SERVER['PHP_SELF'],0,strlen($_SERVER['PHP_SELF'])-10);   
+}
+                    
+                    ?>
+			</div>
+		</div>
+	</div>
+	</div>
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+$('li[data-active="fid-0"]').addClass('active');
+</script>
+
+<script>
+$('li[data-active="<?php echo empty($conf['nav_2_bbs_on']) ? 'index' : 'bbs'; ?>"]').addClass('active');
+</script><script>
+jsearch_form = $('#search_form');
+jsearch_form.on('submit', function() {
+	var keyword = jsearch_form.find('input[name="keyword"]').val();
+	var url = xn.url('search-'+xn.urlencode(keyword));
+	window.location = url;
+	return false;
+});
+</script>

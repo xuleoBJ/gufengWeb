@@ -1,0 +1,10 @@
+{
+    "name": "SM图床",
+    "brief": "把图片上传到SM.MS",
+    "version": "2.2",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "dependencies": []
+}

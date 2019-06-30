@@ -1,0 +1,16 @@
+<?php
+$tianapi_apikey = kv_get('apikey');
+$get_tianapi=file_get_contents('http://api.tianapi.com/txapi/sentence/?key='.$tianapi_apikey);
+$sentence=json_decode($get_tianapi,true);
+$sentence_content = $sentence['code'] == 200?$sentence['newslist'][0]['content'].' - '.$sentence['newslist'][0]['author']:'数据读取失败，请检查该插件的apikey';
+?>
+<div class="card">
+    <div class="card-header">
+        精美句子
+    </div>
+    <div class="card-footer">
+        <?php echo $sentence_content;?>
+    </div>
+</div>
+
+
